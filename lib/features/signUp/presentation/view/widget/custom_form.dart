@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/signUp/presentation/view/widget/custom_button.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/text_form.dart';
+import 'package:instagramapp/features/signUp/presentation/view/widget/textfield_password.dart';
 
 class CustomForm extends StatefulWidget {
   CustomForm({super.key});
@@ -24,6 +26,10 @@ class _CustomFormState extends State<CustomForm> {
           const CustomTextForm(
             hintext: 'email',
           ),
+          const SizedBox(height: 10),
+          const CustomTextFieldPassword(),
+          const SizedBox(height: 10),
+          const CustomButton(),
         ],
       ),
     );

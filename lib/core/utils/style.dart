@@ -16,4 +16,9 @@ abstract class Style {
     fontSize: 10,
     color: Colors.white,
   );
+
+  static const textStyle15 = TextStyle(
+    fontSize: 15,
+    color: Colors.lightBlue,
+  );
 }

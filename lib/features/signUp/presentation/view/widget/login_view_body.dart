@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/custom_form.dart';
-import 'package:instagramapp/features/signUp/presentation/view/widget/personal_image.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/text_button.dart';
 
-class SignupViewBody extends StatelessWidget {
-  const SignupViewBody({super.key});
+class LoginViewBody extends StatelessWidget {
+  const LoginViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +22,17 @@ class SignupViewBody extends StatelessWidget {
                 'Instagram App',
                 style: Style.textStyle30,
               ),
-              const SizedBox(height: 20),
-              const PersonalImage(),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               CustomForm(
-                textbutton: 'SignUp',
+                textbutton: 'Login',
               ),
-              const SizedBox(height: 10),
-              const CustomTextButton(
-                text: 'Do you have an account?',
-              ),
+              SizedBox(height: 10),
+              CustomTextButton(text: 'Sign Up'),
             ],
           ),
         ),
       ),
     );
+    ;
   }
 }

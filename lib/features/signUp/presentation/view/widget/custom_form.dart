@@ -4,15 +4,15 @@ import 'package:instagramapp/features/signUp/presentation/view/widget/text_form.
 import 'package:instagramapp/features/signUp/presentation/view/widget/textfield_password.dart';
 
 class CustomForm extends StatefulWidget {
-  CustomForm({super.key});
+  CustomForm({super.key, required this.textbutton});
 
+  final String textbutton;
   @override
   State<CustomForm> createState() => _CustomFormState();
 }
 
 class _CustomFormState extends State<CustomForm> {
   final GlobalKey key = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -29,7 +29,9 @@ class _CustomFormState extends State<CustomForm> {
           const SizedBox(height: 10),
           const CustomTextFieldPassword(),
           const SizedBox(height: 10),
-          const CustomButton(),
+          CustomButton(
+            text: widget.textbutton,
+          ),
         ],
       ),
     );

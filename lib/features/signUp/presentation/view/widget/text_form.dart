@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/border.dart';
 
 class CustomTextForm extends StatelessWidget {
-  const CustomTextForm({super.key, required this.hintext, required this.validator});
+  const CustomTextForm(
+      {super.key, required this.hintext, required this.validator});
   final String hintext;
   final String? Function(String?)? validator;
   @override
@@ -10,11 +11,11 @@ class CustomTextForm extends StatelessWidget {
     return Container(
       width: 350,
       child: TextFormField(
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         validator: validator,
         decoration: InputDecoration(
           hintText: hintext,
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.grey),
           focusedBorder: customborderfoucs(),
           enabledBorder: customborderenable(),
         ),

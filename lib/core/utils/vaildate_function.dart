@@ -15,4 +15,3 @@ String? ValidateEmail(value) {
     return 'Please enter a vaild email';
   }
 }
-

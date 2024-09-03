@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/add_view_body.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/personal_view_body.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/search_view_body.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,16 +20,23 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  final List pageList = [HomeScreen(),];
+  final List pageList = [
+    const HomeViewBody(),
+    const SearchViewBody(),
+    const AddViewBody(),
+    const PersonalViewBody(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HomeViewBody(),
+      body: pageList[selected],
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.white,
+        backgroundColor: Colors.black,
         currentIndex: selected,
         onTap: selectPage,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             backgroundColor: Colors.black,
             icon: Icon(
@@ -50,6 +60,14 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.white,
             ),
             label: 'Add',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.black,
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            label: 'Person',
           ),
         ],
       ),

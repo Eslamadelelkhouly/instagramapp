@@ -7,7 +7,7 @@ class PersonalImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 80,
           backgroundColor: Colors.white,
         ),
@@ -16,7 +16,7 @@ class PersonalImage extends StatelessWidget {
           width: 80 * 2,
           child: IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               size: 20,
               Icons.add,
               color: Colors.blue,

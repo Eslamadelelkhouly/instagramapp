@@ -5,7 +5,7 @@ import 'package:instagramapp/features/signUp/presentation/view/widget/text_form.
 import 'package:instagramapp/features/signUp/presentation/view/widget/textfield_password.dart';
 
 class CustomForm extends StatefulWidget {
-  CustomForm({super.key, required this.textbutton});
+  const CustomForm({super.key, required this.textbutton});
 
   final String textbutton;
 

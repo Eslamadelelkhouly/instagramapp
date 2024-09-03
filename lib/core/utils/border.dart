@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 OutlineInputBorder customborderenable() {
-  return OutlineInputBorder(
+  return const OutlineInputBorder(
     borderSide: BorderSide(
       color: Colors.grey,
     ),
@@ -9,7 +9,7 @@ OutlineInputBorder customborderenable() {
 }
 
 OutlineInputBorder customborderfoucs() {
-  return OutlineInputBorder(
+  return const OutlineInputBorder(
     borderSide: BorderSide(
       color: Colors.white,
     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
 
 class RowTitleHomeScreen extends StatelessWidget {
   const RowTitleHomeScreen({super.key});
@@ -10,12 +11,7 @@ class RowTitleHomeScreen extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 20,
-            backgroundImage: NetworkImage(
-              'https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814080_1280.png',
-            ),
-          ),
+          const CirclePhoto(),
           SizedBox(width: 10),
           Text(
             'name',

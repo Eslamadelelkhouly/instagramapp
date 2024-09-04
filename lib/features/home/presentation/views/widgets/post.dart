@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/fotter_post.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/row_title_home_screen.dart';
 
 class Post extends StatelessWidget {
@@ -12,7 +13,7 @@ class Post extends StatelessWidget {
         Image.network(
           'https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814080_1280.png',
         ),
-      
+        const FotterPost(),
       ],
     );
   }

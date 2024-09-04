@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/post.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/row_title_home_screen.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -14,6 +15,7 @@ class HomeViewBody extends StatelessWidget {
         children: [
           SizedBox(height: height * 0.06),
           const RowTitleHomeScreen(),
+          const Post(),
         ],
       ),
     );

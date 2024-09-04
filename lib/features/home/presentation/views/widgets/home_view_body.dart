@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/home_title.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/post.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/row_title_home_screen.dart';
 
@@ -13,8 +14,8 @@ class HomeViewBody extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          SizedBox(height: height * 0.06),
-          const RowTitleHomeScreen(),
+          const HomeTitle(),
+          SizedBox(height: height * 0.04),
           const Post(),
         ],
       ),

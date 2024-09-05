@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instagramapp/features/home/presentation/views/widgets/details_personal.dart';
-import 'package:instagramapp/features/home/presentation/views/widgets/personal_view.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/title_personal.dart';
+import 'package:instagramapp/features/signUp/presentation/view/widget/custom_button.dart';
+import 'package:instagramapp/features/signUp/presentation/view/widget/grid_images.dart';
 
 class PersonalViewBody extends StatelessWidget {
   const PersonalViewBody({super.key});
@@ -14,6 +14,9 @@ class PersonalViewBody extends StatelessWidget {
         child: Column(
           children: [
             const TitlePersonal(),
+            CustomButton(text: 'Edit Profile', onPressed: () {}),
+            const Divider(thickness: 1),
+            const GridImages(),
           ],
         ),
       ),

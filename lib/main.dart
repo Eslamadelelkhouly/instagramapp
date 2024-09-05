@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:instagramapp/features/comment/presentation/views/comment_screen.dart';
 import 'package:instagramapp/features/home/presentation/views/home_screen.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black,
         fontFamily: GoogleFonts.firaSans().fontFamily,
       ),
-      home: const HomeScreen(),
+      home: const CommentScreen(),
     );
   }
 }

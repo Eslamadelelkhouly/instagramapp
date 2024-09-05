@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/comment/presentation/views/widgets/comment_view_body.dart';
 
 class CommentScreen extends StatelessWidget {
   const CommentScreen({super.key});
@@ -7,6 +8,7 @@ class CommentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      body: CommentViewBody(),
     );
   }
 }

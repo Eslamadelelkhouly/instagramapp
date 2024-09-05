@@ -12,7 +12,9 @@ class ListTielSearch extends StatelessWidget {
         'name',
         style: Style.textStyle20,
       ),
-      leading: CirclePhoto(),
+      leading: CirclePhoto(
+        radius: 20,
+      ),
     );
   }
 }

@@ -11,7 +11,9 @@ class RowTitleHomeScreen extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       child: Row(
         children: [
-          const CirclePhoto(),
+          const CirclePhoto(
+            radius: 20,
+          ),
           SizedBox(width: 10),
           Text(
             'name',

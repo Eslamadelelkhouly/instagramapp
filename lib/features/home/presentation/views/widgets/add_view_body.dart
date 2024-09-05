@@ -22,6 +22,7 @@ class AddViewBody extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            SizedBox(height: height * 0.01),
             TextField(
               style: TextStyle(color: Colors.white),
               maxLines: 10,

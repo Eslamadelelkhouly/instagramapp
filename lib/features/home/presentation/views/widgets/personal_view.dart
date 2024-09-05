@@ -12,8 +12,8 @@ class PersonalView extends StatelessWidget {
         const CirclePhoto(
           radius: 40,
         ),
-        SizedBox(height: 10),
-        Text(
+        const SizedBox(height: 10),
+        const Text(
           'Name',
           style: Style.textStyle20,
         ),

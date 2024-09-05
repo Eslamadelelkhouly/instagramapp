@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/details_personal.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/personal_view.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/title_personal.dart';
 
 class PersonalViewBody extends StatelessWidget {
   const PersonalViewBody({super.key});
@@ -11,8 +13,7 @@ class PersonalViewBody extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         child: Column(
           children: [
-            const SizedBox(width: 20),
-            const PersonalView(),
+            const TitlePersonal(),
           ],
         ),
       ),

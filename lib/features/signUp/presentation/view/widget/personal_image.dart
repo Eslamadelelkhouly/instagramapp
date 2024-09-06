@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -12,15 +11,29 @@ class PersonalImage extends StatefulWidget {
 
 class _PersonalImageState extends State<PersonalImage> {
   File? pickimage;
+  bool _isPicking = false; // Track the status of image picker
 
   Future<void> selectImage() async {
-    var image = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
-    );
-    var selected = File(image!.path);
-    if (image != null) {
+    if (_isPicking) return; // Prevent multiple image picker calls
+
+    setState(() {
+      _isPicking = true;
+    });
+
+    try {
+      var image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+      );
+      if (image != null) {
+        setState(() {
+          pickimage = File(image.path);
+        });
+      }
+    } catch (e) {
+      print('Error picking image: $e');
+    } finally {
       setState(() {
-        pickimage = selected;
+        _isPicking = false;
       });
     }
   }
@@ -34,9 +47,9 @@ class _PersonalImageState extends State<PersonalImage> {
           backgroundColor: Colors.white,
           backgroundImage: pickimage != null
               ? FileImage(pickimage!)
-              : NetworkImage(
+              : const NetworkImage(
                   'https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814080_1280.png',
-                ),
+                ) as ImageProvider,
         ),
         Positioned(
           height: 80 * 2,

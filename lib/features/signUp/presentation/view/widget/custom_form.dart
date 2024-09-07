@@ -14,7 +14,19 @@ class CustomForm extends StatefulWidget {
 }
 
 class _CustomFormState extends State<CustomForm> {
+  final email = TextEditingController();
+  final name = TextEditingController();
+  final password = TextEditingController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    email.dispose();
+    name.dispose();
+    password.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +34,20 @@ class _CustomFormState extends State<CustomForm> {
       key: formKey,
       child: Column(
         children: [
-          const CustomTextForm(
+          CustomTextForm(
+            controller: name,
             validator: ValidateName,
             hintext: 'name',
           ),
           const SizedBox(height: 10),
-          const CustomTextForm(
+          CustomTextForm(
+            controller: email,
             validator: ValidateEmail,
             hintext: 'email',
           ),
           const SizedBox(height: 10),
-          const CustomTextFieldPassword(
+          CustomTextFieldPassword(
+            controller: password,
             validator: ValidatePassword,
           ),
           const SizedBox(height: 10),

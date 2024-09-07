@@ -6,7 +6,7 @@ import 'package:instagramapp/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding
-      .ensureInitialized(); // Add the parentheses to call the method
+      .ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

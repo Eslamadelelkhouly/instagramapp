@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
+import 'package:instagramapp/features/signUp/presentation/view/login_screen.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/custom_form.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/personal_image.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/text_button.dart';
@@ -30,7 +31,13 @@ class SignupViewBody extends StatelessWidget {
                 textbutton: 'SignUp',
               ),
               const SizedBox(height: 10),
-              const CustomTextButton(
+              CustomTextButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return LoginScreen();
+                  }));
+                },
                 text: 'Do you have an account?',
               ),
             ],

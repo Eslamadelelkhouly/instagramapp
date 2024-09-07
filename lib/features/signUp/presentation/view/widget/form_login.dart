@@ -7,16 +7,15 @@ import 'package:instagramapp/features/signUp/presentation/view/widget/custom_but
 import 'package:instagramapp/features/signUp/presentation/view/widget/text_form.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/textfield_password.dart';
 
-class CustomForm extends StatefulWidget {
-  const CustomForm({super.key, required this.textbutton});
+class FormLogin extends StatefulWidget {
+  const FormLogin({super.key, required this.textbutton});
 
   final String textbutton;
-
   @override
-  State<CustomForm> createState() => _CustomFormState();
+  State<FormLogin> createState() => _FormLoginState();
 }
 
-class _CustomFormState extends State<CustomForm> {
+class _FormLoginState extends State<FormLogin> {
   final email = TextEditingController();
   final name = TextEditingController();
   final password = TextEditingController();
@@ -58,7 +57,7 @@ class _CustomFormState extends State<CustomForm> {
               formKey.currentState!.save();
               if (formKey.currentState!.validate()) {
                 try {
-                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  await FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: email.text,
                     password: password.text,
                   );
@@ -77,5 +76,6 @@ class _CustomFormState extends State<CustomForm> {
         ],
       ),
     );
+    ;
   }
 }

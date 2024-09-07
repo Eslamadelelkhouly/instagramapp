@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/custom_form.dart';
+import 'package:instagramapp/features/signUp/presentation/view/widget/form_login.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/text_button.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -23,11 +24,16 @@ class LoginViewBody extends StatelessWidget {
                 style: Style.textStyle30,
               ),
               const SizedBox(height: 20),
-              CustomForm(
+              FormLogin(
                 textbutton: 'Login',
               ),
               const SizedBox(height: 10),
-              const CustomTextButton(text: 'Sign Up'),
+              CustomTextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                text: 'Sign Up',
+              ),
             ],
           ),
         ),

@@ -9,15 +9,15 @@ class UserModel {
   final List following;
   final String uid;
 
-  UserModel({
-    required this.uid,
-    required this.email,
-    required this.password,
-    required this.image,
-    required this.name,
-    required this.followers,
-    required this.following,
-  });
+  UserModel(
+    this.uid,
+    this.email,
+    this.password,
+    this.image,
+    this.name,
+    this.followers,
+    this.following,
+  );
 
   Map<String, dynamic> ConveretToMap() {
     return {
@@ -34,13 +34,13 @@ class UserModel {
   static ConvertsnapToModel(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return UserModel(
-      uid: snapshot['uid'],
-      email: snapshot['email'],
-      password: snapshot['password'],
-      image: snapshot['image'],
-      name: snapshot['name'],
-      followers: snapshot['followers'],
-      following: snapshot['following'],
+      snapshot['uid'],
+      snapshot['email'],
+      snapshot['password'],
+      snapshot['image'],
+      snapshot['name'],
+      snapshot['followers'],
+      snapshot['following'],
     );
   }
 }

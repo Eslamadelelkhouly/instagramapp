@@ -4,13 +4,16 @@ import 'package:instagramapp/features/home/function/firebase/firestore.dart';
 
 class ProviderUser with ChangeNotifier {
   UserModel? userdata;
+
   UserModel? get getUser {
     return userdata;
   }
 
-  void fetchUser() async {
+  Future<void> fetchUser() async {
     UserModel user = await Firestore().UserDetails();
     userdata = user;
-    notifyListeners();
+    notifyListeners(); // Notify listeners when user data is updated
   }
+
+  void notifyListeners() {}
 }

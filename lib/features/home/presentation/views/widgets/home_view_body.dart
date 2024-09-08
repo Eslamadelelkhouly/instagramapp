@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagramapp/features/home/presentation/manager/provider_user.dart';
+import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/home_title.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/list_view_post.dart';
 import 'package:provider/provider.dart';

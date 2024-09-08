@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagramapp/features/home/presentation/manager/provider_user.dart';
+import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/add_view_body.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/personal_view_body.dart';
@@ -25,11 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    final usrprovider = Provider.of<ProviderUser>(
-      context,
-      listen: false,
-    );
-    usrprovider.getUser;
+    final userProvider = Provider.of<ProviderUser>(context, listen: false);
+    userProvider
+        .fetchUser(); // Fetch the user data when the screen is initialized
   }
 
   final List pageList = [

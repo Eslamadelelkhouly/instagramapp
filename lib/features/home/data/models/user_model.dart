@@ -19,4 +19,17 @@ class UserModel {
     required this.following,
   });
 
+  Map<String, dynamic> ConveretToMap() {
+    return {
+      'password': password,
+      'email': email,
+      'uid': uid,
+      'name': name,
+      'image': image,
+      'following': following,
+      'followers': followers,
+    };
+  }
+
+ 
 }

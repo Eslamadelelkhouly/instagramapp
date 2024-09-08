@@ -5,8 +5,21 @@ import 'package:instagramapp/features/signUp/presentation/view/widget/custom_for
 import 'package:instagramapp/features/signUp/presentation/view/widget/personal_image.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/text_button.dart';
 
-class SignupViewBody extends StatelessWidget {
+class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
+
+  @override
+  State<SignupViewBody> createState() => _SignupViewBodyState();
+}
+
+class _SignupViewBodyState extends State<SignupViewBody> {
+  String? imageurl; // Store the image URL
+
+  void setImageUrl(String url) {
+    setState(() {
+      imageurl = url;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +32,15 @@ class SignupViewBody extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: height * 0.15),
+              SizedBox(height: height * 0.02),
               const Text(
                 'Instagram App',
                 style: Style.textStyle30,
               ),
               const SizedBox(height: 20),
-              const PersonalImage(),
-              const SizedBox(height: 20),
               CustomForm(
                 textbutton: 'SignUp',
+                imageurl: imageurl, // Pass imageurl to CustomForm
               ),
               const SizedBox(height: 10),
               CustomTextButton(

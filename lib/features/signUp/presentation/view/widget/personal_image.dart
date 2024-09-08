@@ -1,9 +1,13 @@
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
 
 class PersonalImage extends StatefulWidget {
-  const PersonalImage({super.key});
+  final Function(String) onImageSelected; // Callback function
+
+  const PersonalImage({super.key, required this.onImageSelected});
 
   @override
   State<PersonalImage> createState() => _PersonalImageState();
@@ -11,10 +15,10 @@ class PersonalImage extends StatefulWidget {
 
 class _PersonalImageState extends State<PersonalImage> {
   File? pickimage;
-  bool _isPicking = false; // Track the status of image picker
+  bool _isPicking = false;
 
   Future<void> selectImage() async {
-    if (_isPicking) return; // Prevent multiple image picker calls
+    if (_isPicking) return;
 
     setState(() {
       _isPicking = true;
@@ -29,6 +33,16 @@ class _PersonalImageState extends State<PersonalImage> {
           pickimage = File(image.path);
         });
       }
+      final uuid = Uuid().v4();
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('userimage')
+          .child(uuid + '.jpg');
+      await ref.putFile(pickimage!);
+      final imageurl = await ref.getDownloadURL();
+
+      // Pass the imageurl to the parent widget
+      widget.onImageSelected(imageurl);
     } catch (e) {
       print('Error picking image: $e');
     } finally {

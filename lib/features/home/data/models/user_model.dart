@@ -31,5 +31,16 @@ class UserModel {
     };
   }
 
- 
+  static ConvertsnapToModel(DocumentSnapshot snap) {
+    var snapshot = snap.data() as Map<String, dynamic>;
+    return UserModel(
+      uid: snapshot['uid'],
+      email: snapshot['email'],
+      password: snapshot['password'],
+      image: snapshot['image'],
+      name: snapshot['name'],
+      followers: snapshot['followers'],
+      following: snapshot['following'],
+    );
+  }
 }

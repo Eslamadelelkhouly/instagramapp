@@ -13,6 +13,8 @@ class ListTielSearch extends StatelessWidget {
         style: Style.textStyle20,
       ),
       leading: CirclePhoto(
+        image:
+            'https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814080_1280.png',
         radius: 20,
       ),
     );

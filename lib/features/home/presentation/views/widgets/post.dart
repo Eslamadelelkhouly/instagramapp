@@ -4,7 +4,6 @@ import 'package:instagramapp/features/home/presentation/views/widgets/row_title_
 
 class Post extends StatelessWidget {
   const Post({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/presentation/manager/provider_user.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/add_view_body.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/personal_view_body.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/search_view_body.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,13 +22,22 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  @override
+  void initState() {
+    super.initState();
+    final usrprovider = Provider.of<ProviderUser>(
+      context,
+      listen: false,
+    );
+    usrprovider.getUser;
+  }
+
   final List pageList = [
     const HomeViewBody(),
     const SearchViewBody(),
     const AddViewBody(),
     const PersonalViewBody(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

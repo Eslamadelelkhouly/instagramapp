@@ -26,6 +26,7 @@ class PersonalViewBody extends StatelessWidget {
             TitlePersonal(
               personalimage: userprovider
                   .userdata!.image, // Now userdata is guaranteed to be non-null
+              name: userprovider.userdata!.name,
             ),
             CustomButton(text: 'Edit Profile', onPressed: () {}),
             const Divider(thickness: 1),

@@ -39,7 +39,6 @@ class _PersonalImageState extends State<PersonalImage> {
       await ref.putFile(pickimage!);
       final imageurl = await ref.getDownloadURL();
 
-      // Pass the imageurl to the parent widget
       widget.onImageSelected(imageurl);
     } catch (e) {
       print('Error picking image: $e');

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 
 class TitleScreenAdd extends StatelessWidget {
-  const TitleScreenAdd({super.key});
-
+  const TitleScreenAdd({super.key, this.onPressed});
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,7 +18,7 @@ class TitleScreenAdd extends StatelessWidget {
           style: Style.textStyle20,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: onPressed,
           child: const Text(
             'Next',
             style: Style.textStyle15,

@@ -33,7 +33,7 @@ class _PersonalImageState extends State<PersonalImage> {
           pickimage = File(image.path);
         });
       }
-      final uuid = Uuid().v4();
+      final uuid = const Uuid().v4();
       final ref =
           FirebaseStorage.instance.ref().child('userimage').child(uuid + 'jpg');
       await ref.putFile(pickimage!);

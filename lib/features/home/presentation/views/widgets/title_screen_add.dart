@@ -11,15 +11,15 @@ class TitleScreenAdd extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.cancel, color: Colors.white),
+          icon: const Icon(Icons.cancel, color: Colors.white),
         ),
-        Text(
+        const Text(
           'New Post',
           style: Style.textStyle20,
         ),
         TextButton(
           onPressed: () {},
-          child: Text(
+          child: const Text(
             'Next',
             style: Style.textStyle15,
           ),

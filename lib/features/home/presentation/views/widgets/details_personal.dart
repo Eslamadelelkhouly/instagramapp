@@ -6,19 +6,19 @@ class DetailsPersonal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
-        const SizedBox(width: 30),
+        SizedBox(width: 30),
         CardDaetails(
           number: '5',
           nameNumber: 'Posts',
         ),
-        const SizedBox(width: 10),
+        SizedBox(width: 10),
         CardDaetails(
           number: '5',
           nameNumber: 'Followers',
         ),
-        const SizedBox(width: 10),
+        SizedBox(width: 10),
         CardDaetails(
           number: '5',
           nameNumber: 'Following',

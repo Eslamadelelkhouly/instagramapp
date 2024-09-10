@@ -13,19 +13,19 @@ class HomeTitle extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Row(
         children: [
-          Text(
+          const Text(
             'Instegram',
             style: Style.textStyle30,
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return SignupScreen();
+                return const SignupScreen();
               }));
             },
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),

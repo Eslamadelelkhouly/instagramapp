@@ -9,7 +9,7 @@ class ListViewResultSearch extends StatelessWidget {
     return ListView.builder(
       itemCount: 2,
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return const ListTielSearch();
       },

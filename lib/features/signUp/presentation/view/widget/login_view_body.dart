@@ -24,7 +24,7 @@ class LoginViewBody extends StatelessWidget {
                 style: Style.textStyle30,
               ),
               const SizedBox(height: 20),
-              FormLogin(
+              const FormLogin(
                 textbutton: 'Login',
               ),
               const SizedBox(height: 10),

@@ -17,12 +17,12 @@ class CustomTextFieldPassword extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         obscureText: true,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         validator: validator,
         decoration: InputDecoration(
-          suffixIcon: Icon(Icons.visibility_off),
+          suffixIcon: const Icon(Icons.visibility_off),
           hintText: 'password',
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.grey),
           focusedBorder: customborderfoucs(),
           enabledBorder: customborderenable(),
         ),

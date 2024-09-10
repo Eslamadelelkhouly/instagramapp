@@ -9,12 +9,12 @@ class CommentViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: EdgeInsets.all(8),
         child: Column(
           children: [
-            const Text(
+            Text(
               'Comment',
               style: Style.textStyle30,
             ),

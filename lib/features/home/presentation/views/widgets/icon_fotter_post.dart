@@ -9,13 +9,13 @@ class IconFotterPost extends StatelessWidget {
       children: [
         IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.favorite,
               color: Colors.white,
             )),
         IconButton(
           onPressed: () {},
-          icon: Icon(
+          icon: const Icon(
             Icons.comment,
             color: Colors.white,
           ),

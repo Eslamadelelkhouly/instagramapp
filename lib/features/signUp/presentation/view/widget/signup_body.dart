@@ -47,7 +47,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return LoginScreen();
+                    return const LoginScreen();
                   }));
                 },
                 text: 'Do you have an account?',

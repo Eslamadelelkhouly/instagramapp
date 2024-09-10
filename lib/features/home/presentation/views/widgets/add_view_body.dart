@@ -17,14 +17,14 @@ class AddViewBody extends StatelessWidget {
             SizedBox(height: height * 0.4),
             IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.upload,
                 color: Colors.white,
               ),
             ),
             SizedBox(height: height * 0.01),
             TextField(
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               maxLines: 10,
               decoration: InputDecoration(
                 enabledBorder: customborderenable(),

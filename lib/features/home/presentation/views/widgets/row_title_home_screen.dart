@@ -16,7 +16,7 @@ class RowTitleHomeScreen extends StatelessWidget {
                 'https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814080_1280.png',
             radius: 20,
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(
             'name',
             style: Style.textStyle15.copyWith(

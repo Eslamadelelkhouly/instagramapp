@@ -7,11 +7,11 @@ class FotterPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const IconFotterPost(),
-        const TextFotter(),
+        IconFotterPost(),
+        TextFotter(),
       ],
     );
   }

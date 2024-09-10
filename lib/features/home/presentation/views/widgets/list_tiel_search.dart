@@ -7,7 +7,7 @@ class ListTielSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return const ListTile(
       title: Text(
         'name',
         style: Style.textStyle20,

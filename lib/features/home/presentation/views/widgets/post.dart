@@ -3,15 +3,20 @@ import 'package:instagramapp/features/home/presentation/views/widgets/fotter_pos
 import 'package:instagramapp/features/home/presentation/views/widgets/row_title_home_screen.dart';
 
 class Post extends StatelessWidget {
-  const Post({super.key});
+  const Post({
+    super.key,
+    required this.postMap,
+  });
+  final Map<String, dynamic> postMap;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const RowTitleHomeScreen(),
-        Image.network(
-          'https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814080_1280.png',
+        RowTitleHomeScreen(
+          nameuser: postMap['username'],
+          imageperson: postMap['userimage'],
         ),
+        Image.network(postMap['imagepost']),
         const FotterPost(),
       ],
     );

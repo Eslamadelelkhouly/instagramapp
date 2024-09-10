@@ -14,6 +14,7 @@ class PersonalView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 20),
         CirclePhoto(
           image: image,
           radius: 40,

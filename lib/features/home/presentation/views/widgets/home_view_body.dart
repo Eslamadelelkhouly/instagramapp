@@ -15,6 +15,7 @@ class HomeViewBody extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
+            const SizedBox(height: 20),
             const HomeTitle(),
             SizedBox(height: height * 0.04),
             const ListViewPost(),

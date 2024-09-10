@@ -68,6 +68,10 @@ class _AddViewBodyState extends State<AddViewBody> {
           'postid': uuid,
           'description': description.text,
         });
+        setState(() {
+          pickimage = null;
+          description.text = '';
+        });
         ShowSnackBar(context, 'done');
       } on FirebaseException catch (e) {
         ShowSnackBar(context, e.toString());
@@ -80,8 +84,15 @@ class _AddViewBodyState extends State<AddViewBody> {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(height: 20),
             TitleScreenAdd(
-              onPressed: uplode_post,
+              onPressedcancel: () {
+                setState(() {
+                  pickimage = null;
+                  description.text = '';
+                });
+              },
+              onPressednext: uplode_post,
             ),
             pickimage == null
                 ? SizedBox(height: height * 0.4)

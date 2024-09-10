@@ -20,6 +20,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
+              const SizedBox(height: 20),
               TextField(
                 controller: SearchController,
                 decoration: InputDecoration(

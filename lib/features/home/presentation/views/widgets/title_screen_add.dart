@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 
 class TitleScreenAdd extends StatelessWidget {
-  const TitleScreenAdd({super.key, this.onPressed});
-  final void Function()? onPressed;
+  const TitleScreenAdd({
+    super.key,
+    this.onPressednext,
+    this.onPressedcancel,
+  });
+  final void Function()? onPressednext;
+  final void Function()? onPressedcancel;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: onPressedcancel,
           icon: const Icon(Icons.cancel, color: Colors.white),
         ),
         const Text(
@@ -18,7 +24,7 @@ class TitleScreenAdd extends StatelessWidget {
           style: Style.textStyle20,
         ),
         TextButton(
-          onPressed: onPressed,
+          onPressed: onPressednext,
           child: const Text(
             'Next',
             style: Style.textStyle15,

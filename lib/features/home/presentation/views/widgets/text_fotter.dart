@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 
 class TextFotter extends StatelessWidget {
-  const TextFotter({super.key});
-
+  const TextFotter({
+    super.key,
+    required this.postmap,
+  });
+  final Map<String, dynamic> postmap;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '280 likes',
+          '${postmap['likes'].length} likes',
           style: Style.textStyle15.copyWith(
             color: Colors.white,
           ),

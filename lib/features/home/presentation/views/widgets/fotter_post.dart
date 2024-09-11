@@ -19,7 +19,9 @@ class FotterPost extends StatelessWidget {
           mappost: postmap,
           onPressediconfavorite: onPressediconfavorite,
         ),
-        const TextFotter(),
+        TextFotter(
+          postmap: postmap,
+        ),
       ],
     );
   }

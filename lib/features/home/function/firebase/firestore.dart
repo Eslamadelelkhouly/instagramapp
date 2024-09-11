@@ -29,4 +29,13 @@ class Firestore {
       });
     }
   }
+
+  Future<void> delete_post({required Map postmap}) async {
+    if (FirebaseAuth.instance.currentUser!.uid == postmap['uid']) {
+      await FirebaseFirestore.instance
+          .collection('post')
+          .doc(postmap['postid'])
+          .delete();
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/comment/presentation/views/comment_screen.dart';
 
 class IconFotterPost extends StatelessWidget {
   const IconFotterPost({
@@ -27,7 +28,11 @@ class IconFotterPost extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return CommentScreen();
+            }));
+          },
           icon: const Icon(
             Icons.comment,
             color: Colors.white,

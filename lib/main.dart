@@ -13,11 +13,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(const Instagram());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Instagram extends StatelessWidget {
+  const Instagram({super.key});
 
   @override
   Widget build(BuildContext context) {

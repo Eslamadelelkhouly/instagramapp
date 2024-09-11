@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
-import 'package:instagramapp/features/signUp/presentation/view/widget/custom_form.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/form_login.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/text_button.dart';
 
@@ -39,6 +38,5 @@ class LoginViewBody extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

@@ -3,15 +3,23 @@ import 'package:instagramapp/features/home/presentation/views/widgets/icon_fotte
 import 'package:instagramapp/features/home/presentation/views/widgets/text_fotter.dart';
 
 class FotterPost extends StatelessWidget {
-  const FotterPost({super.key});
-
+  const FotterPost({
+    super.key,
+    required this.onPressediconfavorite,
+    required this.postmap,
+  });
+  final void Function()? onPressediconfavorite;
+  final Map<String, dynamic> postmap;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        IconFotterPost(),
-        TextFotter(),
+        IconFotterPost(
+          mappost: postmap,
+          onPressediconfavorite: onPressediconfavorite,
+        ),
+        const TextFotter(),
       ],
     );
   }

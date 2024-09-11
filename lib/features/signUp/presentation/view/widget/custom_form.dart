@@ -47,7 +47,8 @@ class _CustomFormState extends State<CustomForm> {
       child: Column(
         children: [
           PersonalImage(
-              onImageSelected: setImageUrl), // Pass callback to PersonalImage
+            onImageSelected: setImageUrl,
+          ), // Pass callback to PersonalImage
           const SizedBox(height: 80),
           CustomTextForm(
             controller: name,

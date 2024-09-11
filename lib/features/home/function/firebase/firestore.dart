@@ -10,4 +10,23 @@ class Firestore {
         .get();
     return UserModel.ConvertsnapToModel(snapshot);
   }
+
+  Future<void> addPost({required Map postmap}) async {
+    if (postmap['likes'].contains(FirebaseAuth.instance.currentUser!.uid)) {
+      await FirebaseFirestore.instance
+          .collection('posts')
+          .doc(postmap['postid'])
+          .update({
+        'likes':
+            FieldValue.arrayRemove([FirebaseAuth.instance.currentUser!.uid])
+      });
+    } else {
+      await FirebaseFirestore.instance
+          .collection('posts')
+          .doc(postmap['postid'])
+          .update({
+        'likes': FieldValue.arrayUnion([FirebaseAuth.instance.currentUser!.uid])
+      });
+    }
+  }
 }

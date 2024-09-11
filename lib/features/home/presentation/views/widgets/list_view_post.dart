@@ -11,10 +11,10 @@ class ListViewPost extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('posts').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
           if (snapshot.hasError) {
-            return Text('Error');
+            return const Text('Error');
           }
           return ListView.builder(
             shrinkWrap: true,

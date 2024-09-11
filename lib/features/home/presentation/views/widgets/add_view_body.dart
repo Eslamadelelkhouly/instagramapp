@@ -60,13 +60,14 @@ class _AddViewBodyState extends State<AddViewBody> {
             .child(uuid + 'jpg');
         await ref.putFile(pickimage!);
         final imageurl = await ref.getDownloadURL();
-        FirebaseFirestore.instance.collection('posts').add({
+        FirebaseFirestore.instance.collection('posts').doc(uuid).set({
           'username': userProvider.getUser!.name,
           'uid': userProvider.getUser!.uid,
           'userimage': userProvider.getUser!.image,
           'imagepost': imageurl,
           'postid': uuid,
           'description': description.text,
+          'likes': [],
         });
         setState(() {
           pickimage = null;
@@ -118,7 +119,7 @@ class _AddViewBodyState extends State<AddViewBody> {
               maxLines: 10,
               decoration: InputDecoration(
                 hintText: 'Add Comment',
-                helperStyle: TextStyle(color: Colors.grey),
+                helperStyle: const TextStyle(color: Colors.grey),
                 enabledBorder: customborderenable(),
                 focusedBorder: customborderfoucs(),
               ),

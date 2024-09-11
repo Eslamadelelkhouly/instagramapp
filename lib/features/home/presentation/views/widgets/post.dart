@@ -14,8 +14,7 @@ class Post extends StatelessWidget {
     return Column(
       children: [
         RowTitleHomeScreen(
-          nameuser: postMap['username'],
-          imageperson: postMap['userimage'],
+          postmap: postMap,
         ),
         Image.network(postMap['imagepost']),
         FotterPost(

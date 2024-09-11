@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
+import 'package:instagramapp/features/home/function/firebase/firestore.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
 
 class RowTitleHomeScreen extends StatelessWidget {
   const RowTitleHomeScreen({
     super.key,
-    required this.imageperson,
-    required this.nameuser,
+    required this.postmap,
   });
-  final String imageperson;
-  final String nameuser;
+  final Map<String, dynamic> postmap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,16 +16,23 @@ class RowTitleHomeScreen extends StatelessWidget {
       child: Row(
         children: [
           CirclePhoto(
-            image: imageperson,
+            image: postmap['userimage'],
             radius: 20,
           ),
           const SizedBox(width: 10),
           Text(
-            nameuser,
+            postmap['username'],
             style: Style.textStyle15.copyWith(
               color: Colors.white,
             ),
           ),
+          Spacer(),
+          IconButton(
+            onPressed: () {
+              Firestore().delete_post(postmap: postmap);
+            },
+            icon: Icon(Icons.remove),
+          )
         ],
       ),
     );

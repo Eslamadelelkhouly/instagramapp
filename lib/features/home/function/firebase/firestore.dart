@@ -33,7 +33,7 @@ class Firestore {
   Future<void> delete_post({required Map postmap}) async {
     if (FirebaseAuth.instance.currentUser!.uid == postmap['uid']) {
       await FirebaseFirestore.instance
-          .collection('post')
+          .collection('posts')
           .doc(postmap['postid'])
           .delete();
     }

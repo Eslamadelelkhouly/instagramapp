@@ -6,11 +6,18 @@ import 'package:instagramapp/features/home/function/firebase/firestore.dart';
 import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
 import 'package:provider/provider.dart';
 
-class CommentViewBody extends StatelessWidget {
+class CommentViewBody extends StatefulWidget {
   CommentViewBody({super.key, required this.postid});
 
   final String postid;
+
+  @override
+  State<CommentViewBody> createState() => _CommentViewBodyState();
+}
+
+class _CommentViewBodyState extends State<CommentViewBody> {
   final comment = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final userprovider = Provider.of<ProviderUser>(context);
@@ -24,7 +31,8 @@ class CommentViewBody extends StatelessWidget {
               style: Style.textStyle30,
             ),
             ListViewCardCommnt(
-              user: userprovider.getUser!,
+              postid: widget.postid,
+              userModel: userprovider.getUser!,
             ),
             Spacer(),
             TextField(
@@ -40,8 +48,9 @@ class CommentViewBody extends StatelessWidget {
                         comment: comment.text,
                         uuid: userprovider.getUser!.uid,
                         userimage: userprovider.getUser!.image,
-                        postid: postid,
+                        postid: widget.postid,
                       );
+                      setState(() {});
                     }
                     comment.text = '';
                   },

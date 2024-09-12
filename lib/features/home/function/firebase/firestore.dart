@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:instagramapp/features/home/data/models/user_model.dart';
 import 'package:uuid/uuid.dart';
-import 'package:uuid/v4.dart';
 
 class Firestore {
   Future<UserModel> UserDetails() async {
@@ -45,6 +44,7 @@ class Firestore {
       {required comment,
       required uuid,
       required userimage,
+      required name,
       required postid}) async {
     final idcomment = Uuid().v4();
     await FirebaseFirestore.instance
@@ -58,6 +58,7 @@ class Firestore {
       'uuid': uuid,
       'postid': postid,
       'commentid': idcomment,
+      'username': name,
     });
   }
 }

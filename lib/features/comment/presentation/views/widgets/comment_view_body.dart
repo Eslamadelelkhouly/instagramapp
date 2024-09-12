@@ -45,6 +45,7 @@ class _CommentViewBodyState extends State<CommentViewBody> {
                   onPressed: () {
                     if (comment.text != '') {
                       Firestore().add_comment(
+                        name: userprovider.getUser!.name,
                         comment: comment.text,
                         uuid: userprovider.getUser!.uid,
                         userimage: userprovider.getUser!.image,

@@ -13,7 +13,7 @@ class CardCommentScreen extends StatelessWidget {
         radius: 30,
         image: commentMap['userimage'],
       ),
-      title: const Text('Name', style: Style.textStyle20),
+      title: Text(commentMap['username'] ?? '0', style: Style.textStyle20),
       subtitle: Text(
         commentMap['comment'],
         style: Style.textStyle15.copyWith(

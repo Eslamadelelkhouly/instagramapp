@@ -4,7 +4,6 @@ import 'package:instagramapp/features/home/presentation/views/widgets/cirule_pho
 
 class CardCommentScreen extends StatelessWidget {
   const CardCommentScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ListTile(

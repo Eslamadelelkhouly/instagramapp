@@ -22,7 +22,7 @@ class TextFotter extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 10, top: 2),
           child: Text(
-            'nice photo today',
+            postmap['description'],
             style: Style.textStyle15.copyWith(
               color: Colors.white,
             ),
@@ -31,7 +31,9 @@ class TextFotter extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const CommentScreen();
+              return CommentScreen(
+                postid: postmap['postid'],
+              );
             }));
           },
           child: Text(

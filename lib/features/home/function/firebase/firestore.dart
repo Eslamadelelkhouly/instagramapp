@@ -46,21 +46,18 @@ class Firestore {
       required uuid,
       required userimage,
       required postid}) async {
-    if (comment.text != '') {
-      final idcomment = Uuid().v4();
-      await FirebaseFirestore.instance
-          .collection('posts')
-          .doc(postid)
-          .collection('comments')
-          .doc(idcomment)
-          .set({
-        'comment': comment,
-        'userimage': userimage,
-        'uuid': uuid,
-        'postid': postid,
-        'commentid': idcomment,
-      });
-      comment.text = '';
-    }
+    final idcomment = Uuid().v4();
+    await FirebaseFirestore.instance
+        .collection('posts')
+        .doc(postid)
+        .collection('comments')
+        .doc(idcomment)
+        .set({
+      'comment': comment,
+      'userimage': userimage,
+      'uuid': uuid,
+      'postid': postid,
+      'commentid': idcomment,
+    });
   }
 }

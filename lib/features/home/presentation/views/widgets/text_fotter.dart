@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
+import 'package:instagramapp/features/comment/presentation/views/comment_screen.dart';
 
 class TextFotter extends StatelessWidget {
   const TextFotter({
@@ -28,7 +29,11 @@ class TextFotter extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return const CommentScreen();
+            }));
+          },
           child: Text(
             'Add comment',
             style: Style.textStyle15.copyWith(

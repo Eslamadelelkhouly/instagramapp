@@ -28,11 +28,7 @@ class IconFotterPost extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return CommentScreen();
-            }));
-          },
+          onPressed: () {},
           icon: const Icon(
             Icons.comment,
             color: Colors.white,

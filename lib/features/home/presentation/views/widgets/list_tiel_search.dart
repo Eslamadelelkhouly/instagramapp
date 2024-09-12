@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/personal_view.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/personal_view_body.dart';
 
 class ListTielSearch extends StatelessWidget {
-  const ListTielSearch({super.key});
+  const ListTielSearch({
+    super.key,
+    required this.name,
+    required this.image,
+  });
 
+  final String name;
+  final String image;
   @override
   Widget build(BuildContext context) {
-    return const ListTile(
+    return ListTile(
       title: Text(
-        'name',
+        name,
         style: Style.textStyle20,
       ),
       leading: CirclePhoto(
-        image:
-            'https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814080_1280.png',
+        image: image,
         radius: 20,
       ),
     );

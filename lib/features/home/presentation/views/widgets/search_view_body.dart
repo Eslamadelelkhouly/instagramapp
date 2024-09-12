@@ -22,13 +22,19 @@ class _SearchViewBodyState extends State<SearchViewBody> {
             children: [
               const SizedBox(height: 20),
               TextField(
+                style: TextStyle(color: Colors.white),
+                onChanged: (value) {
+                  setState(() {});
+                },
                 controller: SearchController,
                 decoration: InputDecoration(
                   enabledBorder: customborderenable(),
                   focusedBorder: customborderfoucs(),
                 ),
               ),
-              const ListViewResultSearch(),
+              ListViewResultSearch(
+                searchcontroller: SearchController,
+              ),
             ],
           ),
         ),

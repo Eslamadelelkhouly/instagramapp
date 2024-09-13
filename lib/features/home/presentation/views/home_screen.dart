@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/add_view_body.dart';
@@ -26,15 +27,16 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     final userProvider = Provider.of<ProviderUser>(context, listen: false);
-    userProvider
-        .fetchUser(); // Fetch the user data when the screen is initialized
+    userProvider.fetchUser(
+        uid: FirebaseAuth.instance.currentUser!
+            .uid); // Fetch the user data when the screen is initialized
   }
 
   final List pageList = [
     const HomeViewBody(),
     const SearchViewBody(),
     const AddViewBody(),
-    const PersonalViewBody(),
+    PersonalViewBody(uid: FirebaseAuth.instance.currentUser!.uid),
   ];
   @override
   Widget build(BuildContext context) {

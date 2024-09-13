@@ -3,20 +3,31 @@ import 'package:instagramapp/features/home/presentation/views/widgets/details_pe
 import 'package:instagramapp/features/home/presentation/views/widgets/personal_view.dart';
 
 class TitlePersonal extends StatelessWidget {
-  const TitlePersonal(
-      {super.key, required this.personalimage, required this.name});
+  const TitlePersonal({
+    super.key,
+    required this.personalimage,
+    required this.name,
+  });
+
   final String personalimage;
   final String name;
+
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize
+          .min, // Add this line to make Row take only the necessary space
       children: [
-        PersonalView(
-          name: name,
-          image: personalimage,
+        Expanded(
+          child: PersonalView(
+            name: name,
+            image: personalimage,
+          ),
         ),
-        const DetailsPersonal(),
+        const SizedBox(width: 10), // Add spacing if needed
+        const Expanded(
+          child: DetailsPersonal(),
+        ),
       ],
     );
   }

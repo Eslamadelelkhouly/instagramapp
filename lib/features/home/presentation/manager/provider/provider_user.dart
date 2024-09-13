@@ -9,8 +9,8 @@ class ProviderUser with ChangeNotifier {
     return userdata;
   }
 
-  Future<void> fetchUser() async {
-    UserModel user = await Firestore().UserDetails();
+  Future<void> fetchUser({required uid}) async {
+    UserModel user = await Firestore().UserDetails(uid: uid);
     userdata = user;
     notifyListeners(); // Notify listeners when user data is updated
   }

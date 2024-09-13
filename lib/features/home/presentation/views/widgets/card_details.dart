@@ -13,13 +13,13 @@ class CardDaetails extends StatelessWidget {
       children: [
         Text(
           number,
-          style: Style.textStyle20.copyWith(
+          style: Style.textStyle15.copyWith(
             color: Colors.white,
           ),
         ),
         Text(
           nameNumber,
-          style: Style.textStyle20.copyWith(
+          style: Style.textStyle10.copyWith(
             color: Colors.white,
           ),
         ),

@@ -4,10 +4,10 @@ import 'package:instagramapp/features/home/data/models/user_model.dart';
 import 'package:uuid/uuid.dart';
 
 class Firestore {
-  Future<UserModel> UserDetails() async {
+  Future<UserModel> UserDetails({required uid}) async {
     DocumentSnapshot snapshot = await FirebaseFirestore.instance
         .collection('users')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .doc(uid)
         .get();
     return UserModel.ConvertsnapToModel(snapshot);
   }

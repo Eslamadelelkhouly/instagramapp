@@ -6,18 +6,22 @@ import 'package:instagramapp/features/home/presentation/views/widgets/title_pers
 import 'package:instagramapp/features/signUp/presentation/view/widget/custom_button.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/grid_images.dart';
 
-class PersonalViewBody extends StatelessWidget {
+class PersonalViewBody extends StatefulWidget {
   final String uid;
 
   const PersonalViewBody({super.key, required this.uid});
 
   @override
+  State<PersonalViewBody> createState() => _PersonalViewBodyState();
+}
+
+class _PersonalViewBodyState extends State<PersonalViewBody> {
+  @override
   Widget build(BuildContext context) {
     // Listen for changes in ProviderUser
     final userprovider = Provider.of<ProviderUser>(context);
-
     // Fetch user data when the widget is built
-    userprovider.fetchUser(uid: uid);
+    userprovider.fetchUser(uid: widget.uid);
 
     // If user data is null, show a loading indicator
     if (userprovider.userdata == null) {
@@ -41,7 +45,7 @@ class PersonalViewBody extends StatelessWidget {
             const SizedBox(height: 10),
             CustomButton(text: 'Edit Profile', onPressed: () {}),
             const Divider(thickness: 1),
-            GridImageViewProfile(uid: uid),
+            GridImageViewProfile(uid: widget.uid),
           ],
         ),
       ),

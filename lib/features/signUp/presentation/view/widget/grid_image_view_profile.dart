@@ -18,10 +18,7 @@ class GridImageViewProfile extends StatelessWidget {
               .get(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return ModalProgressHUD(
-                inAsyncCall: true,
-                child: Text(''),
-              );
+              return Text('');
             }
             return GridView.count(
               shrinkWrap: true,

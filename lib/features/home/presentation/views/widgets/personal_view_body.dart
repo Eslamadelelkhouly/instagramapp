@@ -24,11 +24,6 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
     userprovider.fetchUser(uid: widget.uid);
 
     // If user data is null, show a loading indicator
-    if (userprovider.userdata == null) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
 
     // Once user data is fetched, display it
     return SafeArea(
@@ -45,7 +40,7 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
             const SizedBox(height: 10),
             CustomButton(text: 'Edit Profile', onPressed: () {}),
             const Divider(thickness: 1),
-            GridImageViewProfile(uid: widget.uid),
+            const GridImages(),
           ],
         ),
       ),

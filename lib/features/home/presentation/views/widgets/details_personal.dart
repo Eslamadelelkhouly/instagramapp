@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagramapp/features/home/presentation/views/widgets/card_details.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/card_daetails.dart';
 
 class DetailsPersonal extends StatelessWidget {
   const DetailsPersonal({super.key});

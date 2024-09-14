@@ -77,23 +77,28 @@ class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
               },
             ),
             const SizedBox(height: 10),
-            CustomButton(
-              color: infollowing == true ? Colors.grey : Colors.blue,
-              text: infollowing == true ? 'unfollow' : 'follow',
-              onPressed: () {
-                if (infollowing == true) {
-                  setState(() {
-                    infollowing = false;
-                  });
-                  Firestore().unfollow_user(uid: widget.uid);
-                } else {
-                  setState(() {
-                    infollowing = true;
-                  });
-                  Firestore().follow_user(uid: widget.uid);
-                }
-              },
-            ),
+            Consumer<ProviderUser>(builder: (context, userProvider, child) {
+              return CustomButton(
+                color: infollowing == true ? Colors.grey : Colors.blue,
+                text: infollowing == true ? 'unfollow' : 'follow',
+                onPressed: () {
+                  if (infollowing == true) {
+                    Firestore().unfollow_user(uid: widget.uid);
+
+                    setState(() {
+                      infollowing = false;
+                      userProvider.decrease_followers();
+                    });
+                  } else {
+                    Firestore().follow_user(uid: widget.uid);
+                    setState(() {
+                      infollowing = true;
+                      userProvider.increase_followers();
+                    });
+                  }
+                },
+              );
+            }),
             const Divider(thickness: 1),
             GridImageViewProfile(uid: widget.uid),
           ],

@@ -14,4 +14,14 @@ class ProviderUser with ChangeNotifier {
     userdata = user;
     notifyListeners(); // Notify listeners after user data is updated
   }
+
+  void increase_followers() {
+    getUser!.followers.length++;
+    notifyListeners();
+  }
+
+  void decrease_followers() {
+    getUser!.followers.length--;
+    notifyListeners();
+  }
 }

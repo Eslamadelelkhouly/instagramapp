@@ -8,13 +8,14 @@ class TitlePersonal extends StatelessWidget {
     required this.personalimage,
     required this.name,
     required this.followers,
-    required this.following,
+    required this.following, required this.posts,
   });
 
   final String personalimage;
   final String name;
   final String followers;
   final String following;
+  final String posts;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class TitlePersonal extends StatelessWidget {
         const SizedBox(width: 10), // Add spacing if needed
         Expanded(
           child: DetailsPersonal(
+            posts: posts,
             followers: followers,
             following: following,
           ),

@@ -18,6 +18,7 @@ class PersonaViewDifferentUser extends StatefulWidget {
 
 class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
   late List following;
+  late int postcount = 0;
   bool infollowing =
       false; // Initialize infollowing to avoid LateInitializationError
 
@@ -43,6 +44,17 @@ class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
     Provider.of<ProviderUser>(context, listen: false)
         .fetchUser(uid: widget.uid);
     fetch_current_user();
+    fetch();
+  }
+
+  void fetch() async {
+    var snap = await FirebaseFirestore.instance
+        .collection('posts')
+        .where('uid', isEqualTo: widget.uid)
+        .get();
+    setState(() {
+      postcount = snap.docs.length;
+    });
   }
 
   @override
@@ -69,6 +81,7 @@ class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
                   return const Center(child: CircularProgressIndicator());
                 }
                 return TitlePersonal(
+                  posts: postcount.toString(),
                   following: userProvider.userdata!.following.length.toString(),
                   followers: userProvider.userdata!.followers.length.toString(),
                   personalimage: userProvider.userdata!.image,

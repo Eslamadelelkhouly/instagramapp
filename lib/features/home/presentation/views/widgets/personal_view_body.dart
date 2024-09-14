@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
@@ -15,6 +17,25 @@ class PersonalViewBody extends StatefulWidget {
 }
 
 class _PersonalViewBodyState extends State<PersonalViewBody> {
+  late int postcount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    fetch();
+  }
+
+  void fetch() async {
+    var snap = await FirebaseFirestore.instance
+        .collection('posts')
+        .where('uid', isEqualTo: widget.uid)
+        .get();
+
+    setState(() {
+      postcount = snap.docs.length; // Update the postcount and rebuild the UI
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // Listen for changes in ProviderUser
@@ -22,9 +43,6 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
     // Fetch user data when the widget is built
     userprovider.fetchUser(uid: widget.uid);
 
-    // If user data is null, show a loading indicator
-
-    // Once user data is fetched, display it
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(5),
@@ -33,7 +51,8 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
               CrossAxisAlignment.start, // Align items to the start
           children: [
             TitlePersonal(
-              following: userprovider.userdata!.followers.length.toString(),
+              posts: postcount.toString(), // Post count from Firestore
+              following: userprovider.userdata!.following.length.toString(),
               followers: userprovider.userdata!.followers.length.toString(),
               personalimage: userprovider.userdata!.image,
               name: userprovider.userdata!.name,

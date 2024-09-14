@@ -6,9 +6,11 @@ class DetailsPersonal extends StatelessWidget {
     super.key,
     required this.following,
     required this.followers,
+    required this.posts,
   });
   final String following;
   final String followers;
+  final String posts;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,7 +18,7 @@ class DetailsPersonal extends StatelessWidget {
       children: [
         Expanded(
           child: CardDaetails(
-            number: '5',
+            number: posts,
             nameNumber: 'Posts',
           ),
         ),

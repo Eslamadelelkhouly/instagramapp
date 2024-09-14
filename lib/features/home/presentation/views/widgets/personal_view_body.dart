@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagramapp/features/signUp/presentation/view/widget/grid_image_view_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/title_personal.dart';
@@ -34,6 +33,8 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
               CrossAxisAlignment.start, // Align items to the start
           children: [
             TitlePersonal(
+              following: userprovider.userdata!.followers.length.toString(),
+              followers: userprovider.userdata!.followers.length.toString(),
               personalimage: userprovider.userdata!.image,
               name: userprovider.userdata!.name,
             ),

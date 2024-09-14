@@ -7,10 +7,14 @@ class TitlePersonal extends StatelessWidget {
     super.key,
     required this.personalimage,
     required this.name,
+    required this.followers,
+    required this.following,
   });
 
   final String personalimage;
   final String name;
+  final String followers;
+  final String following;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +29,11 @@ class TitlePersonal extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10), // Add spacing if needed
-        const Expanded(
-          child: DetailsPersonal(),
+        Expanded(
+          child: DetailsPersonal(
+            followers: followers,
+            following: following,
+          ),
         ),
       ],
     );

@@ -5,10 +5,8 @@ import 'package:uuid/uuid.dart';
 
 class Firestore {
   Future<UserModel> UserDetails({required uid}) async {
-    DocumentSnapshot snapshot = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(uid)
-        .get();
+    DocumentSnapshot snapshot =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
     return UserModel.ConvertsnapToModel(snapshot);
   }
 
@@ -59,6 +57,20 @@ class Firestore {
       'postid': postid,
       'commentid': idcomment,
       'username': name,
+    });
+  }
+
+  follow_user({required uid}) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({
+      'following': FieldValue.arrayUnion([uid])
+    });
+
+    await FirebaseFirestore.instance.collection('users').doc(uid).update({
+      'followers':
+          FieldValue.arrayUnion([FirebaseAuth.instance.currentUser!.uid])
     });
   }
 }

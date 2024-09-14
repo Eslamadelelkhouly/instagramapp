@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/card_daetails.dart';
 
 class DetailsPersonal extends StatelessWidget {
-  const DetailsPersonal({super.key});
-
+  const DetailsPersonal({
+    super.key,
+    required this.following,
+    required this.followers,
+  });
+  final String following;
+  final String followers;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,12 +22,12 @@ class DetailsPersonal extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         CardDaetails(
-          number: '5',
+          number: followers,
           nameNumber: 'Followers',
         ),
         const SizedBox(width: 10),
         CardDaetails(
-          number: '5',
+          number: following,
           nameNumber: 'Following',
         ),
       ],

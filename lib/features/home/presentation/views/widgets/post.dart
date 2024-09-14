@@ -16,7 +16,9 @@ class Post extends StatelessWidget {
         RowTitleHomeScreen(
           postmap: postMap,
         ),
-        Image.network(postMap['imagepost']),
+        Image.network(
+          postMap['imagepost'],
+        ),
         FotterPost(
           postmap: postMap,
           onPressediconfavorite: () {

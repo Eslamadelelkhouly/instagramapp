@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.text, required this.onPressed});
+  const CustomButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    required this.color,
+  });
 
   final String text;
   final void Function()? onPressed;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,7 +20,7 @@ class CustomButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.blue),
+            backgroundColor: MaterialStateProperty.all(color),
           ),
           onPressed: onPressed,
           child: Text(

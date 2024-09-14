@@ -68,6 +68,7 @@ class _CustomFormState extends State<CustomForm> {
           ),
           const SizedBox(height: 10),
           CustomButton(
+            color: Colors.blue,
             onPressed: () async {
               formKey.currentState!.save();
               if (formKey.currentState!.validate() && imageurl != null) {

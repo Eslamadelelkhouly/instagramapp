@@ -39,7 +39,11 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
               name: userprovider.userdata!.name,
             ),
             const SizedBox(height: 10),
-            CustomButton(text: 'Edit Profile', onPressed: () {}),
+            CustomButton(
+              color: Colors.blue,
+              text: 'Edit Profile',
+              onPressed: () {},
+            ),
             const Divider(thickness: 1),
             const GridImages(),
           ],

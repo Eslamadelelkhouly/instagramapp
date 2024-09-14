@@ -5,7 +5,7 @@ import 'package:instagramapp/features/home/function/firebase/firestore.dart';
 import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/title_personal.dart';
 import 'package:instagramapp/features/signUp/presentation/view/widget/custom_button.dart';
-import 'package:instagramapp/features/signUp/presentation/view/widget/grid_image_view_profile.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/grid_image_view_profile.dart';
 import 'package:provider/provider.dart';
 
 class PersonaViewDifferentUser extends StatefulWidget {
@@ -18,7 +18,8 @@ class PersonaViewDifferentUser extends StatefulWidget {
 
 class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
   late List following;
-  late bool infollowing;
+  bool infollowing =
+      false; // Initialize infollowing to avoid LateInitializationError
 
   Future<void> fetch_current_user() async {
     var snapshot = await FirebaseFirestore.instance
@@ -29,7 +30,9 @@ class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
     if (snapshot.exists) {
       var data = snapshot.data();
       following = data?['following'] ?? [];
-      infollowing = following.contains(widget.uid);
+      setState(() {
+        infollowing = following.contains(widget.uid);
+      });
     }
   }
 
@@ -50,6 +53,14 @@ class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: Icon(Icons.arrow_back),
+              color: Colors.white,
+            ),
+
             // Consumer listens to changes in ProviderUser and rebuilds the UI
             Consumer<ProviderUser>(
               builder: (context, userProvider, child) {
@@ -67,14 +78,22 @@ class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
             ),
             const SizedBox(height: 10),
             CustomButton(
-                text: 'follow',
-                onPressed: () {
-                  if (infollowing == true) {
-                    return; // unfollow
-                  } else {
-                    Firestore().follow_user(uid: widget.uid);
-                  }
-                }),
+              color: infollowing == true ? Colors.grey : Colors.blue,
+              text: infollowing == true ? 'unfollow' : 'follow',
+              onPressed: () {
+                if (infollowing == true) {
+                  setState(() {
+                    infollowing = false;
+                  });
+                  Firestore().unfollow_user(uid: widget.uid);
+                } else {
+                  setState(() {
+                    infollowing = true;
+                  });
+                  Firestore().follow_user(uid: widget.uid);
+                }
+              },
+            ),
             const Divider(thickness: 1),
             GridImageViewProfile(uid: widget.uid),
           ],

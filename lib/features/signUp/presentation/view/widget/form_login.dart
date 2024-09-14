@@ -53,6 +53,7 @@ class _FormLoginState extends State<FormLogin> {
           ),
           const SizedBox(height: 10),
           CustomButton(
+            color: Colors.blue,
             onPressed: () async {
               formKey.currentState!.save();
               if (formKey.currentState!.validate()) {

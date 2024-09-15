@@ -44,7 +44,7 @@ class Firestore {
       required userimage,
       required name,
       required postid}) async {
-    final idcomment = Uuid().v4();
+    final idcomment = const Uuid().v4();
     await FirebaseFirestore.instance
         .collection('posts')
         .doc(postid)

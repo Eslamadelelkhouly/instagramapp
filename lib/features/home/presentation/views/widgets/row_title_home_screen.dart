@@ -26,12 +26,12 @@ class RowTitleHomeScreen extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
             onPressed: () {
               Firestore().delete_post(postmap: postmap);
             },
-            icon: Icon(Icons.remove),
+            icon: const Icon(Icons.remove),
           )
         ],
       ),

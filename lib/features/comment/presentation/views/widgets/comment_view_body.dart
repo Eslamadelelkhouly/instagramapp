@@ -7,7 +7,7 @@ import 'package:instagramapp/features/home/presentation/manager/provider/provide
 import 'package:provider/provider.dart';
 
 class CommentViewBody extends StatefulWidget {
-  CommentViewBody({super.key, required this.postid});
+  const CommentViewBody({super.key, required this.postid});
 
   final String postid;
 
@@ -23,10 +23,10 @@ class _CommentViewBodyState extends State<CommentViewBody> {
     final userprovider = Provider.of<ProviderUser>(context);
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            Text(
+            const Text(
               'Comment',
               style: Style.textStyle30,
             ),
@@ -34,10 +34,10 @@ class _CommentViewBodyState extends State<CommentViewBody> {
               postid: widget.postid,
               userModel: userprovider.getUser!,
             ),
-            Spacer(),
+            const Spacer(),
             TextField(
               controller: comment,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 enabledBorder: customborderenable(),
                 focusedBorder: customborderfoucs(),
@@ -55,7 +55,7 @@ class _CommentViewBodyState extends State<CommentViewBody> {
                     }
                     comment.text = '';
                   },
-                  icon: Icon(Icons.send),
+                  icon: const Icon(Icons.send),
                 ),
               ),
             ),

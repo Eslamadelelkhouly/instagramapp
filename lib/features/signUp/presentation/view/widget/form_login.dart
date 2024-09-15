@@ -77,6 +77,5 @@ class _FormLoginState extends State<FormLogin> {
         ],
       ),
     );
-    ;
   }
 }

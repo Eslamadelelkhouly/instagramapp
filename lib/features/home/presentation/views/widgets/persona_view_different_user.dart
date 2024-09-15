@@ -69,7 +69,7 @@ class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               color: Colors.white,
             ),
 

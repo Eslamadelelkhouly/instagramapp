@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/comment/presentation/views/widgets/column_bottom_card.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
-import 'package:intl/intl.dart';
 
 class CardCommentScreen extends StatelessWidget {
   const CardCommentScreen({super.key, required this.commentMap});

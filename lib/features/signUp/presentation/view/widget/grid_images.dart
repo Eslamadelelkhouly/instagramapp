@@ -16,7 +16,7 @@ class GridImages extends StatelessWidget {
               .get(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return ModalProgressHUD(
+              return const ModalProgressHUD(
                 inAsyncCall: true,
                 child: Text(''),
               );

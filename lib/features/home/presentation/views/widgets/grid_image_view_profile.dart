@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class GridImageViewProfile extends StatelessWidget {
   const GridImageViewProfile({
@@ -18,7 +17,7 @@ class GridImageViewProfile extends StatelessWidget {
               .get(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Text('');
+              return const Text('');
             }
             return GridView.count(
               shrinkWrap: true,
@@ -32,6 +31,5 @@ class GridImageViewProfile extends StatelessWidget {
             );
           }),
     );
-    ;
   }
 }

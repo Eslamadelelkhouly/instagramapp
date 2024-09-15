@@ -68,6 +68,7 @@ class _AddViewBodyState extends State<AddViewBody> {
           'postid': uuid,
           'description': description.text,
           'likes': [],
+          'data': Timestamp.now(),
         });
         setState(() {
           pickimage = null;

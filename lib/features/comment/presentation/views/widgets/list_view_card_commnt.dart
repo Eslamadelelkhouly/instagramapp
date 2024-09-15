@@ -19,6 +19,7 @@ class ListViewCardCommnt extends StatelessWidget {
           .collection('posts')
           .doc(postid)
           .collection('comments')
+          .orderBy('date', descending: true)
           .snapshots(),
       builder: (context, snapshot) {
         // Handle loading and error states

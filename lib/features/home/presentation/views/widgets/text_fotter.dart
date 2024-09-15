@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/comment/presentation/views/comment_screen.dart';
+import 'package:intl/intl.dart';
 
 class TextFotter extends StatelessWidget {
   const TextFotter({
@@ -40,6 +41,15 @@ class TextFotter extends StatelessWidget {
             'Add comment',
             style: Style.textStyle15.copyWith(
               color: Colors.white,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, top: 2),
+          child: Text(
+            style: Style.textStyle15.copyWith(color: Colors.white),
+            DateFormat.MMMEd().format(
+              postmap['data'].toDate(),
             ),
           ),
         ),

@@ -57,6 +57,7 @@ class Firestore {
       'postid': postid,
       'commentid': idcomment,
       'username': name,
+      'date': Timestamp.now(),
     });
   }
 
@@ -74,7 +75,7 @@ class Firestore {
     });
   }
 
-    unfollow_user({required uid}) async {
+  unfollow_user({required uid}) async {
     await FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)

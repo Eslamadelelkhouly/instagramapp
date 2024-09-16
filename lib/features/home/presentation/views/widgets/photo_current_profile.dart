@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/add_status_view_body.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
 
 class PhotoCurrentProfile extends StatelessWidget {
@@ -16,7 +17,11 @@ class PhotoCurrentProfile extends StatelessWidget {
           width: 140,
           height: 130,
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return AddStatusViewBody();
+              }));
+            },
             icon: Icon(
               Icons.add,
               size: 30,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
-import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/photo_current_profile.dart';
 
 class PersonalView extends StatelessWidget {

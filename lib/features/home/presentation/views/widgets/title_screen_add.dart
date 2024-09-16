@@ -6,9 +6,11 @@ class TitleScreenAdd extends StatelessWidget {
     super.key,
     this.onPressednext,
     this.onPressedcancel,
+    required this.tilte,
   });
   final void Function()? onPressednext;
   final void Function()? onPressedcancel;
+  final String tilte;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +21,8 @@ class TitleScreenAdd extends StatelessWidget {
           onPressed: onPressedcancel,
           icon: const Icon(Icons.cancel, color: Colors.white),
         ),
-        const Text(
-          'New Post',
+        Text(
+          tilte,
           style: Style.textStyle20,
         ),
         TextButton(

@@ -87,6 +87,7 @@ class _AddViewBodyState extends State<AddViewBody> {
           children: [
             const SizedBox(height: 20),
             TitleScreenAdd(
+              tilte: 'New Post',
               onPressedcancel: () {
                 setState(() {
                   pickimage = null;

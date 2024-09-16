@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 
 class ChoiceImageVideo extends StatelessWidget {
-  const ChoiceImageVideo({super.key});
-
+  const ChoiceImageVideo({
+    super.key,
+    required this.selectImage,
+    required this.selectVideo,
+  });
+  final Future<void> Function() selectImage;
+  final Future<void> Function() selectVideo;
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
       icon: Icon(Icons.upload, color: Colors.white),
       onSelected: (String choice) {
         if (choice == 'option1') {
-        } else if (choice == 'option2') {}
+          selectVideo();
+        } else if (choice == 'option2') {
+          selectImage();
+        }
       },
       itemBuilder: (BuildContext context) {
         return <PopupMenuEntry<String>>[

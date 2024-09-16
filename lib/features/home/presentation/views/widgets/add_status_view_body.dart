@@ -13,14 +13,16 @@ class AddStatusViewBody extends StatefulWidget {
 
 class _AddViewBodyState extends State<AddStatusViewBody> {
   File? pickimage;
-  bool _isPicking = false;
+  File? pickvideo;
+  bool _isPickingimage = false;
+  bool _isPickvideo = false;
   final description = TextEditingController();
 
   Future<void> selectImage() async {
-    if (_isPicking) return;
+    if (_isPickingimage) return;
 
     setState(() {
-      _isPicking = true;
+      _isPickingimage = true;
     });
 
     try {
@@ -30,13 +32,40 @@ class _AddViewBodyState extends State<AddStatusViewBody> {
       if (image != null) {
         setState(() {
           pickimage = File(image.path);
+          pickvideo = null;
         });
       }
     } catch (e) {
       print('Error picking image: $e');
     } finally {
       setState(() {
-        _isPicking = false;
+        _isPickingimage = false;
+      });
+    }
+  }
+
+  Future<void> selectvideo() async {
+    if (_isPickvideo) return;
+
+    setState(() {
+      _isPickvideo = true;
+    });
+
+    try {
+      var video = await ImagePicker().pickVideo(
+        source: ImageSource.gallery,
+      );
+      if (video != null) {
+        setState(() {
+          pickvideo = File(video.path);
+          pickimage = null;
+        });
+      }
+    } catch (e) {
+      print('Error picking image: $e');
+    } finally {
+      setState(() {
+        _isPickvideo = false;
       });
     }
   }
@@ -70,7 +99,10 @@ class _AddViewBodyState extends State<AddStatusViewBody> {
                       width: double.infinity,
                       fit: BoxFit.fill,
                     ),
-              ChoiceImageVideo(),
+              ChoiceImageVideo(
+                selectImage: selectImage,
+                selectVideo: selectvideo,
+              ),
               SizedBox(height: height * 0.02),
             ],
           ),

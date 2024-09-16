@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/photo_current_profile.dart';
 
 class PersonalView extends StatelessWidget {
   const PersonalView({
@@ -15,10 +16,7 @@ class PersonalView extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 20),
-        CirclePhoto(
-          image: image,
-          radius: 40,
-        ),
+        PhotoCurrentProfile(image: image),
         const SizedBox(height: 10),
         Text(
           name,

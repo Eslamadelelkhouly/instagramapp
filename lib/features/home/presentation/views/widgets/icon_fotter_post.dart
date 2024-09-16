@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagramapp/features/comment/presentation/views/comment_screen.dart';
 
 class IconFotterPost extends StatelessWidget {
   const IconFotterPost({

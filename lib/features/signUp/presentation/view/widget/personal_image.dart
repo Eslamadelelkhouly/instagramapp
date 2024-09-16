@@ -7,7 +7,8 @@ import 'package:uuid/uuid.dart';
 class PersonalImage extends StatefulWidget {
   final Function(String) onImageSelected; // Callback function
 
-  const PersonalImage({super.key, required this.onImageSelected});
+  const PersonalImage(
+      {super.key, required this.onImageSelected});
 
   @override
   State<PersonalImage> createState() => _PersonalImageState();

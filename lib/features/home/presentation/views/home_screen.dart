@@ -36,7 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
     const HomeViewBody(),
     const SearchViewBody(),
     const AddViewBody(),
-    PersonalViewBody(uid: FirebaseAuth.instance.currentUser!.uid),
+    PersonalViewBody(
+      kind: '',
+      uid: FirebaseAuth.instance.currentUser!.uid,
+    ),
   ];
   @override
   Widget build(BuildContext context) {

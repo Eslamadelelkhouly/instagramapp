@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagramapp/features/home/presentation/views/widgets/add_status_view_body.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/add_story_view_body.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
 
 class PhotoCurrentProfile extends StatelessWidget {

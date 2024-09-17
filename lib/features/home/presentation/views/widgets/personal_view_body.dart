@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/title_person_status.dart';
 import 'package:provider/provider.dart';
 import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/title_personal.dart';
@@ -8,8 +9,13 @@ import 'package:instagramapp/features/signUp/presentation/view/widget/grid_image
 
 class PersonalViewBody extends StatefulWidget {
   final String uid;
+  final String kind;
 
-  const PersonalViewBody({super.key, required this.uid});
+  const PersonalViewBody({
+    super.key,
+    required this.uid,
+    required this.kind,
+  });
 
   @override
   State<PersonalViewBody> createState() => _PersonalViewBodyState();
@@ -49,13 +55,25 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
           crossAxisAlignment:
               CrossAxisAlignment.start, // Align items to the start
           children: [
-            TitlePersonal(
-              posts: postcount.toString(), // Post count from Firestore
-              following: userprovider.userdata!.following.length.toString(),
-              followers: userprovider.userdata!.followers.length.toString(),
-              personalimage: userprovider.userdata!.image,
-              name: userprovider.userdata!.name,
-            ),
+            widget.kind == 'personscreen'
+                ? TitlePersonal(
+                    posts: postcount.toString(), // Post count from Firestore
+                    following:
+                        userprovider.userdata!.following.length.toString(),
+                    followers:
+                        userprovider.userdata!.followers.length.toString(),
+                    personalimage: userprovider.userdata!.image,
+                    name: userprovider.userdata!.name,
+                  )
+                : TitlePersonSearch(
+                    posts: postcount.toString(), // Post count from Firestore
+                    following:
+                        userprovider.userdata!.following.length.toString(),
+                    followers:
+                        userprovider.userdata!.followers.length.toString(),
+                    personalimage: userprovider.userdata!.image,
+                    name: userprovider.userdata!.name,
+                  ),
             const SizedBox(height: 10),
             CustomButton(
               color: Colors.blue,

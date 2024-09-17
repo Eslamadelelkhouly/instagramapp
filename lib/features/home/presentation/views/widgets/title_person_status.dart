@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/details_personal.dart';
-import 'package:instagramapp/features/home/presentation/views/widgets/personal_view.dart';
+import 'package:instagramapp/features/home/presentation/views/widgets/personal_view_story.dart';
 
-class TitlePersonal extends StatelessWidget {
-  const TitlePersonal({
-    super.key,
-    required this.personalimage,
-    required this.name,
-    required this.followers,
-    required this.following,
-    required this.posts,
-  });
+class TitlePersonSearch extends StatelessWidget {
+  const TitlePersonSearch(
+      {super.key,
+      required this.personalimage,
+      required this.name,
+      required this.followers,
+      required this.following,
+      required this.posts});
 
   final String personalimage;
   final String name;
@@ -25,7 +24,7 @@ class TitlePersonal extends StatelessWidget {
           .min, // Add this line to make Row take only the necessary space
       children: [
         Expanded(
-          child: PersonalView(
+          child: PersonalViewStory(
             name: name,
             image: personalimage,
           ),

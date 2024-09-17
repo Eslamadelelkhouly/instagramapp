@@ -3,20 +3,16 @@ import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/photo_current_profile.dart';
 
-class PersonalView extends StatelessWidget {
-  const PersonalView({
-    super.key,
-    required this.image,
-    required this.name,
-  });
-  final String image;
+class PersonalViewStory extends StatelessWidget {
+  const PersonalViewStory({super.key, required this.name, required this.image});
   final String name;
+  final String image;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const SizedBox(height: 20),
-        CirclePhoto(image: image, radius: 40),
+        PhotoCurrentProfile(image: image),
         const SizedBox(height: 10),
         Text(
           name,
@@ -24,5 +20,6 @@ class PersonalView extends StatelessWidget {
         ),
       ],
     );
+    ;
   }
 }

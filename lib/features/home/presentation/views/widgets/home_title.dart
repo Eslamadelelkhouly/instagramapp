@@ -13,7 +13,7 @@ class HomeTitle extends StatelessWidget {
       child: Row(
         children: [
           const Text(
-            'Instegram',
+            'Instagram',
             style: Style.textStyle30,
           ),
           const Spacer(),

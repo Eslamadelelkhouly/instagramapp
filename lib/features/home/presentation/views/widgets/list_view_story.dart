@@ -39,11 +39,15 @@ class ListViewStory extends StatelessWidget {
             itemCount: snapshot.data!.docs.length, // Ensure itemCount is valid
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
+              Map<String, dynamic> userMap =
+                  snapshot.data!.docs[index].data() as Map<String, dynamic>;
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Column(
                   children: [
-                    CardListViewStory(),
+                    CardListViewStory(
+                      userMap: userMap,
+                    ),
                   ],
                 ),
               );

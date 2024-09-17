@@ -62,7 +62,7 @@ class _FormLoginState extends State<FormLogin> {
                     email: email.text,
                     password: password.text,
                   );
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) {
                       return const HomeScreen();
                     }),

@@ -78,6 +78,7 @@ class _CustomFormState extends State<CustomForm> {
                     password: password.text,
                   );
                   UserModel userModel = UserModel(
+                    [],
                     FirebaseAuth.instance.currentUser!.uid,
                     email.text,
                     password.text,

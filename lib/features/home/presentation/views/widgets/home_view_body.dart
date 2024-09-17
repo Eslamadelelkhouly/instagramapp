@@ -17,7 +17,7 @@ class HomeViewBody extends StatelessWidget {
             const HomeTitle(),
             SizedBox(height: height * 0.04),
             const ListViewStory(),
-            SizedBox(height: height * 0.04),
+            SizedBox(height: height * 0.01),
             const ListViewPost(),
           ],
         ),

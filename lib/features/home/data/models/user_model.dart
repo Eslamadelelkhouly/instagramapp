@@ -8,8 +8,10 @@ class UserModel {
   final List followers;
   final List following;
   final String uid;
+  final List stories;
 
   UserModel(
+    this.stories,
     this.uid,
     this.email,
     this.password,
@@ -28,6 +30,7 @@ class UserModel {
       'image': image,
       'following': following,
       'followers': followers,
+      'stories': stories,
     };
   }
 
@@ -41,6 +44,7 @@ class UserModel {
       snapshot['name'],
       snapshot['followers'],
       snapshot['following'],
+      snapshot['stories'],
     );
   }
 }

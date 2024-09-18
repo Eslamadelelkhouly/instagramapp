@@ -27,9 +27,20 @@ class PhotoCurrentProfile extends StatelessWidget {
       },
       child: Stack(
         children: [
-          CirclePhoto(
-            radius: 40,
-            image: image,
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                width: 3,
+                color: userprovider.getUser!.stories.isEmpty
+                    ? Colors.grey
+                    : Colors.pink,
+              ),
+            ),
+            child: CirclePhoto(
+              radius: 40,
+              image: image,
+            ),
           ),
           // Use Padding or Positioned carefully to ensure it doesn't overlap
           Positioned(

@@ -16,7 +16,7 @@ class CardListViewStory extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return Story(
-                userMap: userMap,
+                stories: userMap['stories'],
               );
             },
           ),

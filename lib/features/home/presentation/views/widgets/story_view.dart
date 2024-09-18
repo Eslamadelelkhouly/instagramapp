@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:story_view/story_view.dart';
 
 class Story extends StatelessWidget {
-  const Story({super.key, required this.userMap});
-  final Map<String, dynamic> userMap;
+  const Story({super.key, required this.stories});
+  final List stories;
   @override
   Widget build(BuildContext context) {
     final storyController = StoryController();
-    List stories = userMap['stories'];
     return StoryView(
       controller: storyController,
       storyItems: stories.map((story) {

@@ -8,20 +8,22 @@ import 'package:provider/provider.dart';
 class PhotoCurrentProfile extends StatelessWidget {
   const PhotoCurrentProfile({super.key, required this.image});
   final String image;
+
   @override
   Widget build(BuildContext context) {
     final userprovider = Provider.of<ProviderUser>(context);
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return Story(
-                stories: userprovider.getUser!.stories,
-              );
-            },
-          ),
-        );
+        final user = userprovider.getUser;
+        if (user != null) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return Story(stories: user.stories);
+              },
+            ),
+          );
+        }
       },
       child: Stack(
         children: [
@@ -29,20 +31,30 @@ class PhotoCurrentProfile extends StatelessWidget {
             radius: 40,
             image: image,
           ),
+          // Use Padding or Positioned carefully to ensure it doesn't overlap
           Positioned(
-            width: 140,
-            height: 130,
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return AddStatusViewBody();
-                }));
-              },
-              icon: Icon(
-                Icons.add,
-                size: 30,
-                color: Colors.white,
+            bottom: 0, // Adjusted positioning
+            right: 0,
+            child: Container(
+              width: 40, // Ensure it's large enough for touch
+              height: 40,
+              decoration: BoxDecoration(
+                color: Colors.blue, // Background to test
+                shape: BoxShape.circle,
+              ),
+              child: IconButton(
+                onPressed: () {
+                  print("Add Story pressed");
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return AddStatusViewBody();
+                  }));
+                },
+                icon: Icon(
+                  Icons.add,
+                  size: 24, // Slightly smaller size to fit the container
+                  color: Colors.white,
+                ),
               ),
             ),
           ),

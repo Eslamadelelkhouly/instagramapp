@@ -88,4 +88,14 @@ class Firestore {
           FieldValue.arrayRemove([FirebaseAuth.instance.currentUser!.uid])
     });
   }
+
+  Future<void> delete_story({required Map story}) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(story['uid'])
+        .update({
+      'stories':
+          FieldValue.arrayRemove([story]) // Remove the exact story object
+    });
+  }
 }

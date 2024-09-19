@@ -23,6 +23,8 @@ class PhotoCurrentProfile extends StatelessWidget {
               },
             ),
           );
+        } else {
+          Text('');
         }
       },
       child: Stack(

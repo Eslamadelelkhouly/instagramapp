@@ -31,6 +31,8 @@ class PersonalView extends StatelessWidget {
                   },
                 ),
               );
+            } else {
+              Text('');
             }
           },
           child: Container(

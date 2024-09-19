@@ -24,4 +24,10 @@ class ProviderUser with ChangeNotifier {
     getUser!.followers.length--;
     notifyListeners();
   }
+
+  void delete_storyy({required Map story}) {
+    userdata!.stories.removeWhere((element) {
+      return element == story;
+    });
+  }
 }

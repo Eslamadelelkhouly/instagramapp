@@ -5,6 +5,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagramapp/core/widgets/show_snack_bar.dart';
+import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_player/video_player.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/choice_image_video.dart';
@@ -91,6 +93,8 @@ class _AddViewBodyState extends State<AddStatusViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    final userprovider = Provider.of<ProviderUser>(context);
+
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
@@ -134,25 +138,29 @@ class _AddViewBodyState extends State<AddStatusViewBody> {
                         await FirebaseFirestore.instance
                             .collection('users')
                             .doc(uid)
-                            .update({
-                          'stories': FieldValue.arrayUnion([
-                            {
-                              'uid': uid,
-                              'storyid': uidstory,
-                              'content': content,
-                              'type': pickvideo != null ? 'video' : 'image',
-                              'date': Timestamp.now(),
-                              'viewes': []
-                            }
-                          ])
-                        });
-
+                            .update(
+                          {
+                            'stories': FieldValue.arrayUnion(
+                              [
+                                {
+                                  'uid': uid,
+                                  'storyid': uidstory,
+                                  'content': content,
+                                  'type': pickvideo != null ? 'video' : 'image',
+                                  'date': Timestamp.now(),
+                                  'viewes': []
+                                }
+                              ],
+                            )
+                          },
+                        );
                         ShowSnackBar(scaffoldContext, 'Upload successful');
 
                         setState(() {
                           pickimage = null;
                           pickvideo = null;
                         });
+                        userprovider.fetchUser(uid: uid);
                       } catch (e) {
                         ShowSnackBar(scaffoldContext, 'Upload failed: $e');
                       }
@@ -175,7 +183,8 @@ class _AddViewBodyState extends State<AddStatusViewBody> {
                                 : Center(
                                     child: SizedBox(
                                       width: 50,
-                                      height: 50, // Small circular progress size
+                                      height:
+                                          50, // Small circular progress size
                                       child: const CircularProgressIndicator(),
                                     ),
                                   ), // Show a loading indicator while the video is initializing

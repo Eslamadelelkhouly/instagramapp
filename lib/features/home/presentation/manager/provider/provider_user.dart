@@ -12,22 +12,27 @@ class ProviderUser with ChangeNotifier {
   Future<void> fetchUser({required String uid}) async {
     UserModel user = await Firestore().UserDetails(uid: uid);
     userdata = user;
-    notifyListeners(); // Notify listeners after user data is updated
+    notifyListeners();
   }
 
   void increase_followers() {
-    getUser!.followers.length++;
-    notifyListeners();
+    if (userdata != null) {
+      userdata!.followers.length++;
+      notifyListeners();
+    }
   }
 
   void decrease_followers() {
-    getUser!.followers.length--;
-    notifyListeners();
+    if (userdata != null) {
+      userdata!.followers.length--;
+      notifyListeners();
+    }
   }
 
   void delete_storyy({required Map story}) {
-    userdata!.stories.removeWhere((element) {
-      return element == story;
-    });
+    if (userdata != null) {
+      userdata!.stories.removeWhere((element) => element == story);
+      notifyListeners(); // Notify listeners after story is deleted
+    }
   }
 }

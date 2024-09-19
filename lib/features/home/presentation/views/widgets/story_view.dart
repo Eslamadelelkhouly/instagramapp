@@ -15,14 +15,16 @@ class Story extends StatefulWidget {
 
 class _StoryState extends State<Story> {
   late StoryController storyController;
-  late Map<String, dynamic> currentStory;
+  Map<String, dynamic>? currentStory;
+  bool _isCompleted = false;
 
   @override
   void initState() {
     super.initState();
     storyController = StoryController();
-    currentStory = Map<String, dynamic>.from(
-        widget.stories.first); // Initialize with the first story
+    if (widget.stories.isNotEmpty) {
+      currentStory = Map<String, dynamic>.from(widget.stories.first);
+    }
   }
 
   @override
@@ -33,7 +35,7 @@ class _StoryState extends State<Story> {
 
   @override
   Widget build(BuildContext context) {
-    final userprovider = Provider.of<ProviderUser>(context);
+    final userprovider = Provider.of<ProviderUser>(context, listen: false);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -46,35 +48,38 @@ class _StoryState extends State<Story> {
 
               if (storyMap['type'] == 'image') {
                 return StoryItem.pageImage(
+                  key: ValueKey(storyMap['id']),
                   url: storyMap['content'],
                   controller: storyController,
-                  imageFit: BoxFit.cover, // تحسين عرض الصور
+                  imageFit: BoxFit.cover,
                 );
               } else if (storyMap['type'] == 'video') {
                 return StoryItem.pageVideo(
                   storyMap['content'],
                   controller: storyController,
+                  key: ValueKey(storyMap['id']),
                 );
               } else {
                 return StoryItem.text(
                   title: 'Unsupported content',
                   backgroundColor: Colors.red,
+                  key: ValueKey(storyMap['id']),
                 );
               }
             }).toList(),
             onStoryShow: (storyItem, index) {
-              // استخدم addPostFrameCallback لتحديث الحالة بعد بناء الويدجت
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                if (currentStory != widget.stories[index]) {
-                  setState(() {
-                    currentStory =
-                        Map<String, dynamic>.from(widget.stories[index]);
-                  });
-                }
-              });
+              final newStory = widget.stories[index];
+              if (currentStory?['id'] != newStory['id']) {
+                setState(() {
+                  currentStory = Map<String, dynamic>.from(newStory);
+                });
+              }
             },
             repeat: false,
             onComplete: () {
+              setState(() {
+                _isCompleted = true;
+              });
               Navigator.of(context).pop();
             },
           ),
@@ -82,17 +87,36 @@ class _StoryState extends State<Story> {
             top: 45,
             left: 20,
             child: IconButton(
-              onPressed: () {
-                if (currentStory['uid'] ==
-                    FirebaseAuth.instance.currentUser!.uid) {
-                  Firestore().delete_story(story: currentStory);
-                  userprovider.delete_storyy(story: currentStory);
-                  Navigator.of(context).pop();
+              onPressed: () async {
+                if (currentStory != null &&
+                    currentStory!['uid'] ==
+                        FirebaseAuth.instance.currentUser!.uid) {
+                  try {
+                    await Firestore().delete_story(story: currentStory!);
+                    userprovider.delete_storyy(story: currentStory!);
+                    Navigator.of(context).pop();
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Error: ${e.toString()}')),
+                    );
+                  }
                 }
               },
               icon: const Icon(Icons.remove, color: Colors.white),
             ),
           ),
+          if (_isCompleted)
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: Colors.black,
+              child: const Center(
+                child: Text(
+                  'No more stories',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
         ],
       ),
     );

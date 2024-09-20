@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagramapp/features/message/presentation/views/widgets/card_list_view_message.dart';
 import 'package:instagramapp/features/message/presentation/views/widgets/list_view_message.dart';
+import 'package:instagramapp/features/message/presentation/views/widgets/title_message_view.dart';
 
 class MessageViewBody extends StatelessWidget {
   const MessageViewBody({super.key});
@@ -10,6 +10,8 @@ class MessageViewBody extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
+          const SizedBox(height: 20),
+          const TitleMessageView(),
           const SizedBox(height: 20),
           Expanded(child: ListViewMessage()),
         ],

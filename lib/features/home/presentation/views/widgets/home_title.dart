@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
+import 'package:instagramapp/features/message/presentation/views/message_view.dart';
 import 'package:instagramapp/features/signUp/presentation/view/signup_screen.dart';
 
 class HomeTitle extends StatelessWidget {
@@ -18,13 +19,19 @@ class HomeTitle extends StatelessWidget {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return const SignupScreen();
-              }));
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return MessageView();
+                  },
+                ),
+              );
             },
-            icon: const Icon(Icons.logout),
+            icon: Icon(
+              Icons.message,
+              color: Colors.white,
+            ),
           ),
         ],
       ),

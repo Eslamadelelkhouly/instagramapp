@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instagramapp/features/home/function/firebase/firestore.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/title_person_status.dart';
+import 'package:instagramapp/features/signUp/presentation/view/signup_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:instagramapp/features/home/presentation/manager/provider/provider_user.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/title_personal.dart';
@@ -47,6 +50,15 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
     final userprovider = Provider.of<ProviderUser>(context);
     // Fetch user data when the widget is built
     userprovider.fetchUser(uid: widget.uid);
+    @override
+    void initState() {
+      userprovider.getUser!.stories.forEach(
+        (element) {
+          Firestore().deleteAfter24h(story: element);
+        },
+      );
+      setState(() {});
+    }
 
     return SafeArea(
       child: Padding(
@@ -55,6 +67,24 @@ class _PersonalViewBodyState extends State<PersonalViewBody> {
           crossAxisAlignment:
               CrossAxisAlignment.start, // Align items to the start
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const SignupScreen();
+                      }));
+                    },
+                    icon: const Icon(Icons.logout, color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
             widget.kind == 'personscreen'
                 ? TitlePersonal(
                     posts: postcount.toString(), // Post count from Firestore

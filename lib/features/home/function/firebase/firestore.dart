@@ -98,4 +98,11 @@ class Firestore {
           FieldValue.arrayRemove([story]) // Remove the exact story object
     });
   }
+
+  deleteAfter24h({required Map story}) {
+    Duration difference = DateTime.now().difference(story['date'].toDate());
+    if (difference.inSeconds >= 5) {
+      delete_story(story: story);
+    }
+  }
 }

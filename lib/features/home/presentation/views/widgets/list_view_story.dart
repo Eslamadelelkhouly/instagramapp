@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
+import 'package:instagramapp/features/home/function/firebase/firestore.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/card_list_view_story.dart';
 
 class ListViewStory extends StatelessWidget {
@@ -41,6 +42,7 @@ class ListViewStory extends StatelessWidget {
             itemBuilder: (context, index) {
               Map<String, dynamic> userMap =
                   snapshot.data!.docs[index].data() as Map<String, dynamic>;
+              Firestore().deleteAfter24h(story: userMap['stories'][index]);
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Column(

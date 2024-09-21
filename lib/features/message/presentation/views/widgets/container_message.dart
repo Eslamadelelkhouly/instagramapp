@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 
 class ContainerMessage extends StatelessWidget {
-  const ContainerMessage({super.key});
+  const ContainerMessage(
+      {super.key, required this.message, required this.data});
 
+  final String message;
+  final String data;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -44,11 +47,14 @@ class ContainerMessage extends StatelessWidget {
                 color: Colors.black,
               ),
               child: Text(
-                'eeeeeee',
+                message,
                 style: Style.textStyle20,
               ),
             ),
-            Text('10:15', style: Style.textStyle10),
+            Text(
+              data,
+              style: Style.textStyle10,
+            ),
           ],
         ),
       ),

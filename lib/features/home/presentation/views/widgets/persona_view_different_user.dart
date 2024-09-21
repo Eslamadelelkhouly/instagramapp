@@ -59,62 +59,64 @@ class _PersonaViewDifferentUserState extends State<PersonaViewDifferentUser> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: const Icon(Icons.arrow_back),
-              color: Colors.white,
-            ),
-
-            // Consumer listens to changes in ProviderUser and rebuilds the UI
-            Consumer<ProviderUser>(
-              builder: (context, userProvider, child) {
-                // If user data is null, show a loading indicator
-                if (userProvider.userdata == null) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                return TitlePersonal(
-                  posts: postcount.toString(),
-                  following: userProvider.userdata!.following.length.toString(),
-                  followers: userProvider.userdata!.followers.length.toString(),
-                  personalimage: userProvider.userdata!.image,
-                  name: userProvider.userdata!.name,
-                );
-              },
-            ),
-            const SizedBox(height: 10),
-            Consumer<ProviderUser>(builder: (context, userProvider, child) {
-              return CustomButton(
-                color: infollowing == true ? Colors.grey : Colors.blue,
-                text: infollowing == true ? 'unfollow' : 'follow',
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
                 onPressed: () {
-                  if (infollowing == true) {
-                    Firestore().unfollow_user(uid: widget.uid);
-
-                    setState(() {
-                      infollowing = false;
-                      userProvider.decrease_followers();
-                    });
-                  } else {
-                    Firestore().follow_user(uid: widget.uid);
-                    setState(() {
-                      infollowing = true;
-                      userProvider.increase_followers();
-                    });
-                  }
+                  Navigator.of(context).pop();
                 },
-              );
-            }),
-            const Divider(thickness: 1),
-            GridImageViewProfile(uid: widget.uid),
-          ],
+                icon: const Icon(Icons.arrow_back),
+                color: Colors.white,
+              ),
+      
+              // Consumer listens to changes in ProviderUser and rebuilds the UI
+              Consumer<ProviderUser>(
+                builder: (context, userProvider, child) {
+                  // If user data is null, show a loading indicator
+                  if (userProvider.userdata == null) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return TitlePersonal(
+                    posts: postcount.toString(),
+                    following: userProvider.userdata!.following.length.toString(),
+                    followers: userProvider.userdata!.followers.length.toString(),
+                    personalimage: userProvider.userdata!.image,
+                    name: userProvider.userdata!.name,
+                  );
+                },
+              ),
+              const SizedBox(height: 10),
+              Consumer<ProviderUser>(builder: (context, userProvider, child) {
+                return CustomButton(
+                  color: infollowing == true ? Colors.grey : Colors.blue,
+                  text: infollowing == true ? 'unfollow' : 'follow',
+                  onPressed: () {
+                    if (infollowing == true) {
+                      Firestore().unfollow_user(uid: widget.uid);
+      
+                      setState(() {
+                        infollowing = false;
+                        userProvider.decrease_followers();
+                      });
+                    } else {
+                      Firestore().follow_user(uid: widget.uid);
+                      setState(() {
+                        infollowing = true;
+                        userProvider.increase_followers();
+                      });
+                    }
+                  },
+                );
+              }),
+              const Divider(thickness: 1),
+              GridImageViewProfile(uid: widget.uid),
+            ],
+          ),
         ),
       ),
     );

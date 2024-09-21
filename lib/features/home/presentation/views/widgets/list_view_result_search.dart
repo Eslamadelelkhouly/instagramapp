@@ -35,6 +35,7 @@ class ListViewResultSearch extends StatelessWidget {
           itemBuilder: (context, index) {
             final doc = snapshot.data!.docs[index];
             return ListTielSearch(
+              id: doc['uid'],
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(

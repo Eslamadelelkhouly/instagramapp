@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
@@ -13,7 +16,11 @@ class CardListViewMessage extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return ChatView();
+              return ChatView(
+                id: FirebaseAuth.instance.currentUser!.uid,
+                image: '',
+                name: '',
+              );
             },
           ),
         );

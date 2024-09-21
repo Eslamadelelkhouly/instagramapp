@@ -6,6 +6,6 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChatViewBody();
+    return const ChatViewBody();
   }
 }

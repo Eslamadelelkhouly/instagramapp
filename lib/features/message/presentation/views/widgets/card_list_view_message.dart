@@ -1,14 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramapp/core/utils/style.dart';
 import 'package:instagramapp/features/home/presentation/views/widgets/cirule_photo.dart';
 import 'package:instagramapp/features/message/presentation/views/chat_view.dart';
 
 class CardListViewMessage extends StatelessWidget {
-  const CardListViewMessage({super.key});
+  const CardListViewMessage(
+      {super.key, required this.name, required this.image, required this.id});
 
+  final String name;
+  final String image;
+  final String id;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,9 +18,9 @@ class CardListViewMessage extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return ChatView(
-                id: FirebaseAuth.instance.currentUser!.uid,
-                image: '',
-                name: '',
+                id: id,
+                image: image,
+                name: name,
               );
             },
           ),
@@ -53,7 +54,7 @@ class CardListViewMessage extends StatelessWidget {
           },
         ),
         title: Text(
-          'name',
+          name,
           style: Style.textStyle20,
         ),
         subtitle: Text(
@@ -62,8 +63,7 @@ class CardListViewMessage extends StatelessWidget {
         ),
         leading: CirclePhoto(
           radius: 25,
-          image:
-              'https://img.freepik.com/free-psd/instagram-application-logo_23-2151544096.jpg?w=740&t=st=1726850732~exp=1726851332~hmac=5b284cb58fd4b6842de0f82fffea5ed18d921f5b046164de4584301677e3a644',
+          image: image,
         ),
       ),
     );

@@ -3,10 +3,14 @@ import 'package:instagramapp/core/utils/style.dart';
 
 class ContainerMessage extends StatelessWidget {
   const ContainerMessage(
-      {super.key, required this.message, required this.data});
+      {super.key,
+      required this.message,
+      required this.data,
+      required this.color});
 
   final String message;
   final String data;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -44,7 +48,7 @@ class ContainerMessage extends StatelessWidget {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Colors.white),
-                color: Colors.black,
+                color: color,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8),

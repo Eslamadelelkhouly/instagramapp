@@ -25,9 +25,7 @@ class CardListViewChat extends StatelessWidget {
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Container(
-              width: 50,
-              height: 50,
+            return Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -44,10 +42,14 @@ class CardListViewChat extends StatelessWidget {
             itemBuilder: (context, index) {
               Map<String, dynamic> messageMap =
                   snapshot.data!.docs[index].data() as Map<String, dynamic>;
-              print(messageMap);
+              String currentid = FirebaseAuth.instance.currentUser!.uid;
+              String senderid = messageMap['senderid'];
               return Align(
-                alignment: Alignment.centerLeft,
+                alignment: currentid == senderid
+                    ? Alignment.centerLeft
+                    : Alignment.topRight,
                 child: ContainerMessage(
+                  color: currentid == senderid ? Colors.black : Colors.grey,
                   data: DateFormat.jm().format(messageMap['date'].toDate()),
                   message: messageMap['message'],
                 ),

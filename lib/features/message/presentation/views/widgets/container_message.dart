@@ -6,20 +6,50 @@ class ContainerMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Container(
-        width: 200,
-        height: 80,
-        decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.white),
-          color: Colors.black,
-        ),
-        child: Text(
-          'eeeeeee',
-          style: Style.textStyle20,
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Are you sure?'),
+              actions: [
+                TextButton(
+                  onPressed: () {},
+                  child: Text('yes'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('no'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 200,
+              height: 80,
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Colors.white),
+                color: Colors.black,
+              ),
+              child: Text(
+                'eeeeeee',
+                style: Style.textStyle20,
+              ),
+            ),
+            Text('10:15', style: Style.textStyle10),
+          ],
         ),
       ),
     );

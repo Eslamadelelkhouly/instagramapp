@@ -10,6 +10,7 @@ class CardListViewChat extends StatelessWidget {
   String chatroomid() {
     List user = [FirebaseAuth.instance.currentUser!.uid, id];
     user.sort();
+    print(user);
     return '${user[0]}_${user[1]}';
   }
 
@@ -33,7 +34,9 @@ class CardListViewChat extends StatelessWidget {
           if (snapshot.hasError) {
             return Center(child: Text('An error occurred: ${snapshot.error}'));
           }
+
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            print('No data found for chat room ${chatroomid()}');
             return Center(child: Text('No messages yet'));
           }
           return ListView.builder(
@@ -41,6 +44,7 @@ class CardListViewChat extends StatelessWidget {
             itemBuilder: (context, index) {
               Map<String, dynamic> messageMap =
                   snapshot.data!.docs[index].data() as Map<String, dynamic>;
+              print(messageMap);
               return Align(
                 alignment: Alignment.centerLeft,
                 child: ContainerMessage(

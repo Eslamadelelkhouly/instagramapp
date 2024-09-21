@@ -59,7 +59,7 @@ class _TextFieldChatViewState extends State<TextFieldChatView> {
               });
               await FirebaseFirestore.instance
                   .collection('chats')
-                  .doc('chatroomid')
+                  .doc(chatroomid())
                   .collection('messages')
                   .doc(idmessage)
                   .set({

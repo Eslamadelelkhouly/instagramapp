@@ -46,9 +46,12 @@ class ContainerMessage extends StatelessWidget {
                 border: Border.all(color: Colors.white),
                 color: Colors.black,
               ),
-              child: Text(
-                message,
-                style: Style.textStyle20,
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Text(
+                  message,
+                  style: Style.textStyle20,
+                ),
               ),
             ),
             Text(
